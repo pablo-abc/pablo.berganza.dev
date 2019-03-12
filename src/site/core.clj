@@ -29,7 +29,8 @@
    [:div.right-nav
     [:a.nav-item [:i.fab.fa-github]]
     [:a.nav-item [:i.fab.fa-instagram]]
-    [:a.nav-item [:i.fab.fa-facebook]]]])
+    [:a.nav-item [:i.fab.fa-facebook]]
+    [:a.nav-item [:i.fab.fa-twitter]]]])
 
 (defn head [title site-title]
   [:head
@@ -87,7 +88,7 @@
            [:section#blog-list
             (for [blog (sort-by :index entries)]
               [:a.blog-item {:href (:permalink blog)}
-               [:section
+               [:article
                 [:h3 (:title blog)]
                 [:p.created (:created blog)]
                 [:p.introduction (:introduction blog)]]])]]))
@@ -102,3 +103,19 @@
     [:p.created  (:created entry)]
     (let [content (:content entry)]
       [:section.content content])]))
+
+(defn contact [{:keys [meta]}]
+  (render
+   "Contact Me" (:site-title meta)
+   [:section.contact
+    [:header
+     [:h1 "Contact Me"]]]))
+
+
+(defn not-found [{:keys [meta]}]
+  (render
+   "Not Found" (:site-title meta)
+   [:section.not-found
+    [:h1 "404"]
+    [:p "I'm sorry, it seems you got lost."]
+    [:p "Maybe try some of the links above?"]]))
