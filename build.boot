@@ -33,7 +33,8 @@
   []
   (comp (perun/render :renderer 'site.core/blog :filterer blog?)
         (perun/static :renderer 'site.core/home :page "index.html")
-        (perun/static :renderer 'site.core/contact :page "contact.html")
+        (perun/static :renderer 'site.core/contact
+                      :page "contact/index.html")
         (perun/collection :renderer 'site.core/blogs
                           :filterer blog?
                           :page "blog/index.html")))
