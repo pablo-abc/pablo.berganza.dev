@@ -1,0 +1,55 @@
+nav {
+    max-width: 800px;
+    padding: 0 20px;
+    margin: 8px auto;
+    display: flex;
+    align-items: center;
+
+    div {
+        display: inline-block;
+        &.left-nav {
+            flex: 1;
+        }
+        &.right-nav {
+            a {
+                margin: 5px;
+            }
+        }
+    }
+
+    a.nav-item {
+        text-decoration: none;
+        color: $color-secondary-2-0;
+        transition: color 0.1s;
+
+        // nesting is also supported
+        &:hover {
+            text-decoration: underline;
+            color: $color-secondary-2-2;
+        }
+    }
+
+    a#logo {
+        text-decoration: none;
+        transition: color 0.1s;
+        margin-right: 10px;
+        color: $color-primary-0;
+        font-weight: bold;
+        font-size: 1.5em;
+
+        &:hover {
+            color: $color-primary-1;
+        }
+    }
+}
+
+#page {
+    margin-top: 50px;
+}
+
+#nav-menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+}

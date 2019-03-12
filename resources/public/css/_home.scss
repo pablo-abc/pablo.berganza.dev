@@ -1,0 +1,100 @@
+.main {
+    .main-info {
+        width: 100%;
+        background-image: url("/images/mai.jpg");
+        background-color: $color-primary-1;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    #profile-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 0;
+
+        #profile-pic {
+            object-fit: cover;
+            width: 216px;
+            height: 216px;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        #profile-bubble {
+            color: white;
+            background-color: $color-primary-0;
+            margin: 24px 20px;
+            padding: 24px;
+            padding-top: 28px;
+            border-radius: 50px;
+            line-height: 1;
+            text-align: center;
+        }
+    }
+
+    @media only screen and (min-width: 600px) {
+        #profile-box {
+            flex-direction: row;
+            justify-content: center;
+        }
+    }
+
+    .abilities {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2 {
+            color: $color-primary-3;
+        }
+    }
+
+    .box-abilities {
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+    }
+
+    .color-1 {
+        background-color: $color-secondary-2-1;
+    }
+
+    .color-2 {
+        background-color: $color-secondary-1-1;
+    }
+
+    .color-3 {
+        background-color: $color-primary-1;
+    }
+
+    .ability {
+        width: 100vw;
+        height: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+
+        img {
+            margin: 10%;
+            max-width: 80%;
+        }
+    }
+
+    @media only screen and (min-width: 600px) {
+        .box-abilities {
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            width: 90vw;
+        }
+
+        .ability {
+            width: 20vw;
+            height: 20vw;
+            margin: 0 3% 3% 3%;
+        }
+    }
+}
