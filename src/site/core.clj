@@ -32,15 +32,22 @@
     [:a.nav-item [:i.fab.fa-facebook]]
     [:a.nav-item [:i.fab.fa-twitter]]]])
 
-(defn head [title site-title]
-  [:head
-   [:title (str title " | " site-title)]
-   [:link {:type "text/css"
-           :crossorigin "anonymous"
-           :integrity "sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
-           :href "https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-           :rel "stylesheet"}]
-   (include-css "/css/site.css")])
+(defn head
+  ([title meta] (head title meta nil))
+  ([title meta entry]
+   [:head
+    [:meta {:charset "utf-8"}]
+    [:meta {:name "viewport"
+            :content "width=device-width, initial-scale=1"}]
+    [:meta {:name "author"
+            :content (:author meta)}]
+    [:title (str title " | " (:site-title meta))]
+    [:link {:type "text/css"
+            :crossorigin "anonymous"
+            :integrity "sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+            :href "https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+            :rel "stylesheet"}]
+    (include-css "/css/site.css")]))
 
 (defn render [title title-site & content]
   (hp/html5
@@ -51,7 +58,7 @@
     (into [:section#page] content)]))
 
 (defn page [{:keys [entry meta] :as obj}]
-  (render (:title entry) (:site-title meta)
+  (render (:title entry) meta
           [:h1 (:title entry)]
           [:p (:content entry)]))
 
@@ -60,7 +67,7 @@
     source (assoc :src source)))
 
 (defn home [{:keys [meta]}]
-  (render "Home" (:site-title meta)
+  (render "Home" meta
           [:section.main
            [:section.main-info
             [:div#profile-box
@@ -81,7 +88,7 @@
                   :section.box-abilities))]]))
 
 (defn blogs [{:keys [entries meta]}]
-  (render "Blog" (:site-title meta)
+  (render "Blog" meta
           [:section.blog-posts
            [:header
             [:h1 "Blog"]]
@@ -95,7 +102,7 @@
 
 (defn blog [{:keys [entry meta]}]
   (render
-   (:title entry) (:site-title meta)
+   (:title entry) meta
    [:article#blog
     [:header
      [:h1 (:title entry)]
@@ -106,7 +113,7 @@
 
 (defn contact [{:keys [meta]}]
   (render
-   "Contact Me" (:site-title meta)
+   "Contact Me" meta
    [:section.contact
     [:header
      [:h1 "Contact Me"]]]))
@@ -114,7 +121,7 @@
 
 (defn not-found [{:keys [meta]}]
   (render
-   "Not Found" (:site-title meta)
+   "Not Found" meta
    [:section.not-found
     [:h1 "404"]
     [:p "I'm sorry, it seems you got lost."]
