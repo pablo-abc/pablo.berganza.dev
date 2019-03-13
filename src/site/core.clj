@@ -9,10 +9,6 @@
     "https://cdn.svgporn.com/logos/python.svg"
     "https://cdn.svgporn.com/logos/docker.svg"))
 
-(defn- loader [color]
-  (vec (conj (take 4 (repeat [:div {:class (str "lds-" color)}]))
-             :div.lds-ellipsis)))
-
 (defn- ability-colors [quantity]
   (flatten
    (map vector
@@ -96,7 +92,7 @@
 (defn blogs [{:keys [entries meta]}]
   (render "Blog" meta
           [:section.blog-posts
-           [:header
+           [:header.title
             [:h1 "Blog"]]
            [:section#blog-list
             (if (pos? (count entries))
@@ -112,7 +108,7 @@
   (render
    (:title entry) meta
    [:article#blog
-    [:header
+    [:header.title
      [:h1 (:title entry)]
      [:p.introduction (:introduction entry)]]
     [:p.created  (:created entry)]
@@ -123,7 +119,7 @@
   (render
    "Contact Me" meta
    [:section.contact
-    [:header
+    [:header.title
      [:h1 "Contact Me"]]
     [:section
      [:p "If you have an idea you would like to give life to,"
@@ -158,6 +154,8 @@
   (render
    "Not Found" meta
    [:section.not-found
-    [:h1 "404"]
-    [:p "I'm sorry, it seems you got lost."]
-    [:p "Maybe try some of the links above?"]]))
+    [:header
+     [:h1 "404"]]
+    [:section.message
+     [:p "I'm sorry, it seems you got lost."]
+     [:p "Maybe try some of the links above?"]]]))

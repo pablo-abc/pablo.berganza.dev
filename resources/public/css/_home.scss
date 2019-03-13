@@ -88,13 +88,14 @@
             flex-direction: row;
             justify-content: space-around;
             flex-wrap: wrap;
-            width: 90vw;
+            max-width: 960px;
+            margin: 0 auto;
         }
 
         .ability {
-            width: 20vw;
-            height: 20vw;
-            margin: 0 3vw 3vw 3vw;
+            max-width: 250px;
+            max-height: 250px;
+            margin: 32px 16px;
         }
     }
 }

@@ -1,0 +1,17 @@
+.not-found {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 800px;
+
+    h1 {
+        color: $color-primary-1;
+        font-size: 200px;
+        margin: 0;
+    }
+
+    section {
+        align-self: flex-end;
+        margin-bottom: 80px;
+    }
+}
