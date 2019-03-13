@@ -118,16 +118,34 @@
     [:header
      [:h1 "Contact Me"]]
     [:section
-     [:h2 "If you want to get in touch with me, check out the following:"]
-     [:h3 "Social Media"]
-     [:ul
-      [:li "Github"]
-      [:li "Twitter"]
-      [:li "Instagram"]
-      [:li "Facebook"]]
-     [:h3 "Email"]
-     [:p [:a {:href "mailto:pablo@berganza.dev?subject=[SITE]%20Consultation"}
-          "pablo@berganza.dev"]]]]))
+     [:p "If you have an idea you would like to give life to,"
+      " like a web site or a web application,"
+      " I can help you make it. You can contact me via any of"
+      " the following:"]
+     [:dl
+      [:dt "Social Media"]
+      [:dd
+       [:i.fab.fa-github] " "
+       [:a {:href "https://github.com/pablo-abc" :target "_blank"}
+        "GitHub"]]
+      [:dd [:i.fab.fa-twitter] " "
+       [:a {:href "https://twitter.com/Pablo_ABC" :target "_blank"}
+        "Twitter"]]
+      [:dd [:i.fab.fa-instagram] " "
+       [:a {:href "https://www.instagram.com/berganzapablo/"
+            :target "_blank"}
+        "Instagram"]]
+      [:dd [:i.fab.fa-facebook] " "
+       [:a {:href "https://www.facebook.com/Pablo.ABC" :target "_blank"}
+        "Facebook"]]
+      [:dt "E-Mail"]
+      [:dd
+       [:i.fas.fa-at] " "
+       [:a
+        {:href "mailto:pablo@berganza.dev?subject=[SITE]%20Consultation"}
+        "pablo@berganza.dev"]]]
+     [:div.dec-outer
+      [:div.dec-inner]]]]))
 
 
 (defn not-found [{:keys [meta]}]
