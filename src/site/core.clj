@@ -116,7 +116,14 @@
    "Contact Me" meta
    [:section.contact
     [:header
-     [:h1 "Contact Me"]]]))
+     [:h1 "Contact Me"]]
+    [:section
+     [:h2 "If you want to get in touch with me, check out the following:"]
+     [:h3 "Social Media"]
+     [:ul
+      [:li "Github"]]
+     [:h3 "Email"]
+     [:p "pablo@berganza.dev"]]]))
 
 
 (defn not-found [{:keys [meta]}]

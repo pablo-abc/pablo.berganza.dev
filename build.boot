@@ -35,6 +35,7 @@
         (perun/static :renderer 'site.core/home :page "index.html")
         (perun/static :renderer 'site.core/contact
                       :page "contact/index.html")
+        (perun/static :renderer 'site.core/not-found :page "404.html")
         (perun/collection :renderer 'site.core/blogs
                           :filterer blog?
                           :page "blog/index.html")))
