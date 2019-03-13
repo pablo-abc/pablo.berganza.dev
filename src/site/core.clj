@@ -121,9 +121,13 @@
      [:h2 "If you want to get in touch with me, check out the following:"]
      [:h3 "Social Media"]
      [:ul
-      [:li "Github"]]
+      [:li "Github"]
+      [:li "Twitter"]
+      [:li "Instagram"]
+      [:li "Facebook"]]
      [:h3 "Email"]
-     [:p "pablo@berganza.dev"]]]))
+     [:p [:a {:href "mailto:pablo@berganza.dev?subject=[SITE]%20Consultation"}
+          "pablo@berganza.dev"]]]]))
 
 
 (defn not-found [{:keys [meta]}]
