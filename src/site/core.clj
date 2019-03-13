@@ -79,6 +79,9 @@
                                           "ht=scontent.fsal2-1.fna&oh=6c0dc7645989"
                                           "74ffae0215fb767e92b6&oe=5CB5AD16")}]
              [:h3#profile-bubble "Hi, I make web stuff! Welcome!"]]]
+           [:section.about-me
+            [:h2 "About Me"]
+            [:p "Hello! My name is Pablo Berganza, and I am a web developer established in El Salvador."]]
            [:section.abilities
             [:h2 "My Abilities"]
             (vec (conj
