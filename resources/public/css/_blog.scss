@@ -8,9 +8,16 @@
 
     h1 {
         color: white;
-        padding: 16px 0 8px 0;
+        padding: 8px 0 8px 0;
         margin: 0;
+        line-height: 69px;
     }
+
+    h2 {
+        color: $color-primary-0;
+        text-align: center;
+    }
+
 }
 
 #blog-list {
@@ -66,8 +73,9 @@
 
     h1 {
         color: white;
-        padding: 16px 0 0 0;
+        padding: 8px 0 0 0;
         margin: 0;
+        line-height: 69px;
     }
 
     .introduction {
@@ -80,17 +88,20 @@
         font-style: italic;
         text-align: right;
         width: 95%;
-        max-width: 600px;
+        max-width: 720px;
         margin: 0 auto;
     }
 
     .content {
         color: #555;
-        width: 95%;
         max-width: 720px;
-        margin: 0 auto;
+        margin: 0 10px;
         font-weight: 550;
         line-height: 1.2;
+
+        @media only screen and (min-width: 740px) {
+            margin: 0 auto;
+        }
     }
 
     @media only screen and (min-width: 600px) {

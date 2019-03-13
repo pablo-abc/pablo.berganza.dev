@@ -1,6 +1,40 @@
 .contact {
     position: relative;
 
+    header {
+        background-color: $color-primary-0;
+        text-align: center;
+        width: 100%;
+        margin: 0 0 16px 0;
+    }
+
+    h1 {
+        color: white;
+        padding: 8px 0 8px 0;
+        margin: 0;
+        line-height: 69px;
+    }
+
+    i {
+        color: $color-secondary-2-0;
+    }
+
+    section {
+        margin: 0 10px;
+        max-width: 800px;
+        color: #555;
+
+        @media only screen and (min-width: 820px) {
+            margin: 0 auto;
+        }
+    }
+
+    dt {
+        color: $color-primary-0;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+
     a {
         text-decoration: none;
         color: $color-secondary-2-0;
@@ -13,58 +47,4 @@
         }
     }
 
-    header {
-        background-color: $color-primary-0;
-        text-align: center;
-        width: 100%;
-        margin: 0 0 16px 0;
-        color: white;
-    }
-
-    h1 {
-        color: white;
-        padding: 16px 0 8px 0;
-        margin: 0;
-    }
-
-    i {
-        color: $color-secondary-2-0;
-    }
-
-    section {
-        margin: 0 auto;
-        max-width: 800px;
-        color: #555;
-    }
-
-    dt {
-        color: $color-primary-0;
-        font-weight: bold;
-        margin-top: 8px;
-    }
-
-    ul {
-        list-style-type: none;
-    }
-
-    .dec-outer {
-        background-color: $color-secondary-1-1;
-        width: 250px;
-        height: 250px;
-        border-radius: 10px;
-        position: absolute;
-        right: 15vw;
-        top: 170px;
-        z-index: -1;
-
-        .dec-inner {
-            width: 200px;
-            height: 200px;
-            background-color: $color-secondary-2-1;
-            border-radius: 10px;
-            position: absolute;
-            top: 40%;
-            right: 40%;
-        }
-    }
 }

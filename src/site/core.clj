@@ -27,10 +27,16 @@
      [:a.nav-item {:href "/blog"} "Blog"] " | "
      [:a.nav-item {:href "/contact"} "Contact me"]]]
    [:div.right-nav
-    [:a.nav-item [:i.fab.fa-github]]
-    [:a.nav-item [:i.fab.fa-instagram]]
-    [:a.nav-item [:i.fab.fa-facebook]]
-    [:a.nav-item [:i.fab.fa-twitter]]]])
+    [:a.nav-item {:href "https://github.com/pablo-abc" :target "_blank"}
+     [:i.fab.fa-github]]
+    [:a.nav-item {:href "https://www.instagram.com/berganzapablo/"
+                  :target "_blank"}
+     [:i.fab.fa-instagram]]
+    [:a.nav-item {:href "https://www.facebook.com/Pablo.ABC"
+                  :target "_blank"}
+     [:i.fab.fa-facebook]]
+    [:a.nav-item {:href "https://twitter.com/Pablo_ABC" :target "_blank"}
+     [:i.fab.fa-twitter]]]])
 
 (defn head
   ([title meta] (head title meta nil))
@@ -93,12 +99,14 @@
            [:header
             [:h1 "Blog"]]
            [:section#blog-list
-            (for [blog (sort-by :index entries)]
-              [:a.blog-item {:href (:permalink blog)}
-               [:article
-                [:h3 (:title blog)]
-                [:p.created (:created blog)]
-                [:p.introduction (:introduction blog)]]])]]))
+            (if (pos? (count entries))
+              (for [blog (sort-by :index entries)]
+                [:a.blog-item {:href (:permalink blog)}
+                 [:article
+                  [:h3 (:title blog)]
+                  [:p.created (:created blog)]
+                  [:p.introduction (:introduction blog)]]])
+              [:h2 "It seems there's nothing here... yet."])]]))
 
 (defn blog [{:keys [entry meta]}]
   (render
@@ -143,9 +151,7 @@
        [:i.fas.fa-at] " "
        [:a
         {:href "mailto:pablo@berganza.dev?subject=[SITE]%20Consultation"}
-        "pablo@berganza.dev"]]]
-     [:div.dec-outer
-      [:div.dec-inner]]]]))
+        "pablo@berganza.dev"]]]]]))
 
 
 (defn not-found [{:keys [meta]}]
