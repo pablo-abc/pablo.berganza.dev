@@ -1,4 +1,4 @@
-# [pablo.berganza.dev](https://pablo,berganza.dev)
+# [pablo.berganza.dev](https://pablo.berganza.dev)
 
 This is my personal web site. It was made using [Perun](https://perun.io) static site generater for Clojure.
 
