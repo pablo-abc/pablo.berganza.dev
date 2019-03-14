@@ -29,10 +29,12 @@
 (defn translate [global {permalink :permalink lang :lang}]
   (if (= lang "en")
     permalink
-    (let [lang-rg (re-pattern (str "\\." lang))]
-      (str "/" lang (string/join (string/split permalink lang-rg))))))
+    (str "/" lang
+         (string/join
+          (string/split permalink
+                        (re-pattern (str "\\." lang)))))))
 
-(defn no-index? [file] (not= "index" (:slug file)))
+(defn index? [file] (= "index" (:slug file)))
 
 (deftask build
   "Builds files"
@@ -43,7 +45,7 @@
         (perun/ttr)
         (perun/permalink :permalink-fn translate
                          :extensions [".html" ".html"])
-        (perun/permalink :filterer no-index?)))
+        (perun/permalink :filterer (complement index?))))
 
 (deftask render
   "Render files"
