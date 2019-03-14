@@ -1,3 +1,4 @@
 .nrepl-port
+.nrepl-history
 target/
 node_modules/
