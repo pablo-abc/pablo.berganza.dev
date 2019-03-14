@@ -153,7 +153,7 @@
         "Facebook"]]
       [:dt "E-Mail"]
       [:dd
-       [:i.fas.fa-at] " "
+       [:i.fas.fa-envelope] " "
        [:a
         {:href "mailto:pablo@berganza.dev?subject=[SITE]%20Consultation"}
         "pablo@berganza.dev"]]]]]))
