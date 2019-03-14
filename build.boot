@@ -12,12 +12,27 @@
 (require '[io.perun :as perun]
          '[pandeiro.boot-http :refer [serve]]
          '[deraen.boot-sass :refer [sass]]
-         '[deraen.boot-livereload :refer [livereload]])
+         '[deraen.boot-livereload :refer [livereload]]
+         '[clojure.string :as string])
 
 (task-options!
  pom {:project 'pablo.berganza.dev :version "0.1.1"})
 
 (defn blog? [file] (= "blog" (:type file)))
+
+(defn lang? [lang file] (= lang (:lang file)))
+
+(def english? (partial lang? "en"))
+
+(def spanish? (partial lang? "es"))
+
+(defn translate [global {permalink :permalink lang :lang}]
+  (if (= lang "en")
+    permalink
+    (let [lang-rg (re-pattern (str "\\." lang))]
+      (str "/" lang (string/join (string/split permalink lang-rg))))))
+
+(defn no-index? [file] (not= "index" (:slug file)))
 
 (deftask build
   "Builds files"
@@ -26,7 +41,9 @@
         (perun/global-metadata)
         (perun/markdown)
         (perun/ttr)
-        (perun/permalink)))
+        (perun/permalink :permalink-fn translate
+                         :extensions [".html" ".html"])
+        (perun/permalink :filterer no-index?)))
 
 (deftask render
   "Render files"
@@ -37,8 +54,11 @@
                       :page "contact/index.html")
         (perun/static :renderer 'site.core/not-found :page "404.html")
         (perun/collection :renderer 'site.core/blogs
-                          :filterer blog?
-                          :page "blog/index.html")))
+                          :filterer (every-pred blog? english?)
+                          :page "blog/index.html")
+        (perun/collection :renderer 'site.core/blogs
+                          :filterer (every-pred blog? spanish?)
+                          :page "es/blog/index.html")))
 
 (deftask build-dev
   "Builds with livereload"
