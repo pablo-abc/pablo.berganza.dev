@@ -1,5 +1,5 @@
 nav {
-    max-width: 800px;
+    max-width: 960px;
     padding: 0 20px;
     margin: 8px auto;
     display: flex;
@@ -64,5 +64,6 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: white;
+    background-color:#FEF;
+    opacity: 0.9;
 }
