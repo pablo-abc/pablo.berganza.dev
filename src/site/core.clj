@@ -81,10 +81,10 @@
              [:h3#profile-bubble "Hi, I make web stuff! Welcome!"]]]
            [:section.about-me
             [:h2 "About Me"]
-            [:p "Hello! My name is Pablo, I am a Computer Science graduate"
-             ", working mostly as a web developer."]
+            [:p "Hello! I am a Computer Science graduate"
+             "now working mostly as a web developer."]
             [:p "I have mostly worked developing back-end services for "
-             "web and mobile applications. But have some experience"
+             "web and mobile applications. But I also have some experience"
              " developing web applications using ClojureScript, ReactJS,"
              " and VueJS."]
             [:p "Welcome to my site!"]]
