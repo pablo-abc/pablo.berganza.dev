@@ -11,6 +11,12 @@ nav {
             flex: 1;
         }
         &.right-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            @media only screen and (min-width: 290px) {
+                flex-direction: row;
+            }
             a {
                 margin: 5px;
             }
@@ -44,26 +50,25 @@ nav {
 }
 
 #page {
-    margin-top: 110px;
-}
+    margin-top: 148px;
 
-@media only screen and (min-width: 342px) {
-    #page {
-        margin-top: 76px;
+    @media only screen and (min-width: 290px) {
+        margin-top: 107px;
+    }
+
+    @media only screen and (min-width: 342px) {
+        margin-top: 73px;
+    }
+
+    @media only screen and (min-width: 495px) {
+        margin-top: 50px;
     }
 }
-
-@media only screen and (min-width: 495px) {
-    #page {
-        margin-top: 58px;
-    }
-}
-
 
 #nav-menu {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color:#FEF;
+    background-color: lighten($color-primary-1, 16%);
     opacity: 0.9;
 }

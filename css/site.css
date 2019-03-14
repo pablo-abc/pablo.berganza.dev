@@ -328,8 +328,15 @@ nav {
     display: inline-block; }
     nav div.left-nav {
       flex: 1; }
-    nav div.right-nav a {
-      margin: 5px; }
+    nav div.right-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      @media only screen and (min-width: 290px) {
+        nav div.right-nav {
+          flex-direction: row; } }
+      nav div.right-nav a {
+        margin: 5px; }
   nav a.nav-item {
     text-decoration: none;
     color: #7F4ACD;
@@ -348,21 +355,22 @@ nav {
       color: #F499C7; }
 
 #page {
-  margin-top: 110px; }
-
-@media only screen and (min-width: 342px) {
-  #page {
-    margin-top: 76px; } }
-
-@media only screen and (min-width: 495px) {
-  #page {
-    margin-top: 58px; } }
+  margin-top: 148px; }
+  @media only screen and (min-width: 290px) {
+    #page {
+      margin-top: 107px; } }
+  @media only screen and (min-width: 342px) {
+    #page {
+      margin-top: 73px; } }
+  @media only screen and (min-width: 495px) {
+    #page {
+      margin-top: 50px; } }
 
 #nav-menu {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #FEF;
+  background-color: #fce3ef;
   opacity: 0.9; }
 
 .main .main-info {
@@ -568,7 +576,7 @@ body {
   color: #DA2280;
   margin: 0;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #FEF; }
+  background-color: #fce3ef; }
 
 h1, h2, h3 {
   color: #000; }
