@@ -81,7 +81,13 @@
              [:h3#profile-bubble "Hi, I make web stuff! Welcome!"]]]
            [:section.about-me
             [:h2 "About Me"]
-            [:p "Hello! My name is Pablo Berganza, and I am a web developer established in El Salvador."]]
+            [:p "Hello! My name is Pablo, I am a Computer Science graduate"
+             ", working mostly as a web developer."]
+            [:p "I have mostly worked developing back-end services for "
+             "web and mobile applications. But have some experience"
+             " developing web applications using ClojureScript, ReactJS,"
+             " and VueJS."]
+            [:p "Welcome to my site!"]]
            [:section.abilities
             [:h2 "My Abilities"]
             (vec (conj
@@ -160,5 +166,5 @@
     [:header
      [:h1 "404"]]
     [:section.message
-     [:p "I'm sorry, it seems you got lost."]
-     [:p "Maybe try some of the links above?"]]]))
+     [:h3 "It seems you're lost."]
+     [:h3 "Maybe try some of the links above?"]]]))

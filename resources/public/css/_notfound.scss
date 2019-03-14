@@ -1,8 +1,7 @@
 .not-found {
     display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    max-width: 800px;
+    flex-direction: column;
+    align-items: center;
 
     h1 {
         color: $color-primary-1;
@@ -10,8 +9,12 @@
         margin: 0;
     }
 
+    h3 {
+        color: $color-primary-2;
+        margin: 0;
+    }
+
     section {
-        align-self: flex-end;
         margin-bottom: 80px;
     }
 }

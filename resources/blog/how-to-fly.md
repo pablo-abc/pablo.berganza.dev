@@ -3,6 +3,7 @@ title: How to fly
 type: blog
 introduction: From "The Hithhiker's Guide to the Galaxy" by Douglas Adams
 created: "2019-03-11"
+draft: true
 ---
 
 There is an art, it says, or rather, a knack to flying. The knack lies in learning how to throw yourself at the ground and miss. Pick a nice day, [The Hitchhiker's Guide to the Galaxy] suggests, and try it.
