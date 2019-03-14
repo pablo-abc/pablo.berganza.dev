@@ -15,7 +15,7 @@
          '[deraen.boot-livereload :refer [livereload]])
 
 (task-options!
- pom {:project 'pablo.berganza.dev :version "0.1.0"})
+ pom {:project 'pablo.berganza.dev :version "0.1.1"})
 
 (defn blog? [file] (= "blog" (:type file)))
 
