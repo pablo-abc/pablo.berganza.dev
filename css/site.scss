@@ -1,0 +1,70 @@
+@import 'colorsalt';
+@import 'overpass';
+@import 'navbar';
+@import 'home';
+@import 'blog';
+@import 'contact';
+@import 'notfound';
+
+$font-stack: 'Overpass', 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
+$base-font-size: 1.125em;
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: $font-stack;
+    -webkit-font-smoothing: antialiased;
+    font-size: $base-font-size;
+    color: #333;
+    background-color: #FFF;
+    color: $color-primary-3;
+    margin: 0;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+    color: #000;
+}
+
+h1 {
+    font-size: $base-font-size + 1.375;
+}
+
+h2 {
+    font-size: $base-font-size + 0.875;
+}
+
+h3 {
+    font-size: $base-font-size + 0.125;
+}
+
+a#logo {
+    margin-right: 10px;
+    color: $color-primary-0;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+p {
+    font-size: $base-font-size - 0.25;
+}
+
+.hidden {
+    display: none;
+}
+
+header.title {
+    background-color: $color-primary-0;
+    text-align: center;
+    width: 100%;
+    margin: 0 0 16px 0;
+
+    h1 {
+        color: white;
+        padding: 8px 0 8px 0;
+        margin: 0;
+        line-height: 1.5;
+    }
+}
