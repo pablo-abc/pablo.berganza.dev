@@ -2,12 +2,13 @@
   (:require [hiccup.page :as hp :refer [include-css]]))
 
 (def ability-images
-  '("https://cdn.svgporn.com/logos/javascript.svg"
-    "https://cdn.svgporn.com/logos/typescript-icon.svg"
-    "https://cdn.svgporn.com/logos/clojure.svg"
-    "https://raw.githubusercontent.com/cljs/logo/master/cljs-white.png"
-    "https://cdn.svgporn.com/logos/python.svg"
-    "https://cdn.svgporn.com/logos/docker.svg"))
+  '(["https://cdn.svgporn.com/logos/javascript.svg" "JavaScript"]
+    ["https://cdn.svgporn.com/logos/typescript-icon.svg" "TypeScript"]
+    ["https://cdn.svgporn.com/logos/clojure.svg" "Clojure"]
+    ["https://raw.githubusercontent.com/cljs/logo/master/cljs-white.png"
+     "ClojureScript"]
+    ["https://cdn.svgporn.com/logos/python.svg" "Python"]
+    ["https://cdn.svgporn.com/logos/docker.svg" "Docker"]))
 
 (defn- ability-colors [quantity]
   (flatten
@@ -23,15 +24,21 @@
      [:a.nav-item {:href "/blog"} "Blog"] " | "
      [:a.nav-item {:href "/contact"} "Contact me"]]]
    [:div.right-nav
-    [:a.nav-item {:href "https://github.com/pablo-abc" :target "_blank"}
+    [:a.nav-item
+     {:href "https://github.com/pablo-abc"
+      :target "_blank" :rel "noopener noreferrer"}
      [:i.fab.fa-github]]
-    [:a.nav-item {:href "https://www.instagram.com/berganzapablo/"
-                  :target "_blank"}
+    [:a.nav-item
+     {:href "https://www.instagram.com/berganzapablo/"
+      :target "_blank" :rel "noopener noreferrer"}
      [:i.fab.fa-instagram]]
-    [:a.nav-item {:href "https://www.facebook.com/Pablo.ABC"
-                  :target "_blank"}
+    [:a.nav-item
+     {:href "https://www.facebook.com/Pablo.ABC"
+      :target "_blank" :rel "noopener noreferrer"}
      [:i.fab.fa-facebook]]
-    [:a.nav-item {:href "https://twitter.com/Pablo_ABC" :target "_blank"}
+    [:a.nav-item
+     {:href "https://twitter.com/Pablo_ABC"
+      :target "_blank" :rel "noopener noreferrer"}
      [:i.fab.fa-twitter]]]])
 
 (defn head
@@ -43,6 +50,8 @@
             :content "width=device-width, initial-scale=1"}]
     [:meta {:name "author"
             :content (:author meta)}]
+    [:meta {:name "description"
+            :content "Personal site and blog for Pablo Berganza."}]
     [:title (str title " | " (:site-title meta))]
     [:link {:type "text/css"
             :crossorigin "anonymous"
@@ -52,7 +61,7 @@
     (include-css "/css/site.css")]))
 
 (defn render [title title-site & content]
-  (hp/html5
+  (hp/html5 {:lang "en"}
    (head title title-site)
    [:body
     [:header#nav-menu
@@ -64,9 +73,10 @@
           [:h1 (:title entry)]
           [:p (:content entry)]))
 
-(defn- home-img-attr [source]
-  (cond-> {}
-    source (assoc :src source)))
+(defn- home-img-attr [attr]
+  (-> {}
+     (assoc :src (attr 0))
+     (assoc :alt (attr 1))))
 
 (defn home [{:keys [meta]}]
   (render "Home" meta
@@ -77,7 +87,8 @@
                                           "v/t1.0-9/30516719_10216530245715580_95"
                                           "9662321477615616_n.jpg?_nc_cat=109&_nc_"
                                           "ht=scontent.fsal2-1.fna&oh=6c0dc7645989"
-                                          "74ffae0215fb767e92b6&oe=5CB5AD16")}]
+                                          "74ffae0215fb767e92b6&oe=5CB5AD16")
+                                :alt "Profile picture"}]
              [:h3#profile-bubble "Hi, I make web stuff! Welcome!"]]]
            [:section.about-me
             [:h2 "About Me"]
@@ -139,17 +150,20 @@
       [:dt "Social Media"]
       [:dd
        [:i.fab.fa-github] " "
-       [:a {:href "https://github.com/pablo-abc" :target "_blank"}
+       [:a {:href "https://github.com/pablo-abc" :target "_blank"
+            :rel "noopener noreferrer"}
         "GitHub"]]
       [:dd [:i.fab.fa-twitter] " "
-       [:a {:href "https://twitter.com/Pablo_ABC" :target "_blank"}
+       [:a {:href "https://twitter.com/Pablo_ABC" :target "_blank"
+            :rel "noopener noreferrer"}
         "Twitter"]]
       [:dd [:i.fab.fa-instagram] " "
        [:a {:href "https://www.instagram.com/berganzapablo/"
-            :target "_blank"}
+            :target "_blank" :rel "noopener noreferrer"}
         "Instagram"]]
       [:dd [:i.fab.fa-facebook] " "
-       [:a {:href "https://www.facebook.com/Pablo.ABC" :target "_blank"}
+       [:a {:href "https://www.facebook.com/Pablo.ABC" :target "_blank"
+            :rel "noopener noreferrer"}
         "Facebook"]]
       [:dt "E-Mail"]
       [:dd
