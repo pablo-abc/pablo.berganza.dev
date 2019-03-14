@@ -319,7 +319,7 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 
 nav {
-  max-width: 800px;
+  max-width: 960px;
   padding: 0 20px;
   margin: 8px auto;
   display: flex;
@@ -332,11 +332,11 @@ nav {
       margin: 5px; }
   nav a.nav-item {
     text-decoration: none;
-    color: #A443CA;
+    color: #7F4ACD;
     transition: color 0.1s; }
     nav a.nav-item:hover {
       text-decoration: underline;
-      color: #BA67DB; }
+      color: #9A6DDC; }
   nav a#logo {
     text-decoration: none;
     transition: color 0.1s;
@@ -345,7 +345,7 @@ nav {
     font-weight: bold;
     font-size: 1.5em; }
     nav a#logo:hover {
-      color: #F499C8; }
+      color: #F499C7; }
 
 #page {
   margin-top: 110px; }
@@ -362,12 +362,13 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: white; }
+  background-color: #FEF;
+  opacity: 0.9; }
 
 .main .main-info {
   width: 100%;
   background-image: url("/images/mai.jpg");
-  background-color: #F499C8;
+  background-color: #F499C7;
   background-repeat: no-repeat;
   background-size: 100%; }
 
@@ -403,12 +404,17 @@ nav {
   flex-direction: column;
   align-items: center; }
   .main .abilities h2, .main .about-me h2 {
-    color: #DA2280; }
+    color: #DA2280;
+    margin-bottom: 0; }
   .main .abilities p, .main .about-me p {
     text-align: center;
-    color: #555;
+    color: #333;
     margin: 0 10px;
     max-width: 720px; }
+
+.main .about-me {
+  background-color: #FFC49F;
+  padding-bottom: 48px; }
 
 .main .box-abilities {
   display: flex;
@@ -416,13 +422,13 @@ nav {
   width: 100vw; }
 
 .main .color-1 {
-  background-color: #D397EB; }
+  background-color: #BC9CEC; }
 
 .main .color-2 {
-  background-color: #FFA7A0; }
+  background-color: #FFC49F; }
 
 .main .color-3 {
-  background-color: #F499C8; }
+  background-color: #F499C7; }
 
 .main .ability {
   width: 80vw;
@@ -445,7 +451,7 @@ nav {
   .main .ability {
     max-width: 250px;
     max-height: 250px;
-    margin: 32px 16px; } }
+    margin: 24px 16px; } }
 
 .blog-posts h2 {
   color: #E34495;
@@ -454,22 +460,23 @@ nav {
 #blog-list {
   display: flex;
   flex-direction: column;
-  max-width: 800px;
+  max-width: 720px;
   margin: 0 10px; }
-  @media only screen and (min-width: 820px) {
+  @media only screen and (min-width: 740px) {
     #blog-list {
       margin: 0 auto; } }
 
 .blog-item {
   text-decoration: none;
   transition: background-color 0.1s;
-  color: #C70065;
+  color: #C60065;
   margin: 0;
   margin-top: 16px;
   padding: 8px;
   border-radius: 5px; }
   .blog-item .created {
-    color: #333;
+    color: #555;
+    font-style: italic;
     margin-top: 0px;
     margin-bottom: 8px; }
   .blog-item .introduction {
@@ -478,7 +485,7 @@ nav {
     color: #E34495;
     margin: 0; }
   .blog-item:hover {
-    background-color: #D397EB; }
+    background-color: #BC9CEC; }
 
 #blog {
   width: 100%; }
@@ -498,7 +505,7 @@ nav {
     max-width: 720px;
     margin: 0 auto; }
   #blog .content {
-    color: #555;
+    color: #444;
     max-width: 720px;
     margin: 0 10px;
     font-weight: 550;
@@ -513,11 +520,12 @@ nav {
 .contact {
   position: relative; }
   .contact i {
-    color: #A443CA; }
+    color: #7F4ACD; }
   .contact section {
     margin: 0 10px;
-    max-width: 800px;
-    color: #555; }
+    max-width: 720px;
+    color: #555;
+    font-weight: 550; }
     @media only screen and (min-width: 820px) {
       .contact section {
         margin: 0 auto; } }
@@ -529,22 +537,22 @@ nav {
     margin-top: 8px; }
   .contact a {
     text-decoration: none;
-    color: #A443CA;
+    color: #7F4ACD;
     transition: color 0.1s; }
     .contact a:hover {
       text-decoration: underline;
-      color: #BA67DB; }
+      color: #9A6DDC; }
 
 .not-found {
   display: flex;
   flex-direction: column;
   align-items: center; }
   .not-found h1 {
-    color: #F499C8;
+    color: #F499C7;
     font-size: 200px;
     margin: 0; }
   .not-found h3 {
-    color: #EC69AC;
+    color: #EC69AB;
     margin: 0; }
   .not-found section {
     margin-bottom: 80px; }
@@ -560,7 +568,8 @@ body {
   background-color: #FFF;
   color: #DA2280;
   margin: 0;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #FEF; }
 
 h1, h2, h3 {
   color: #000; }

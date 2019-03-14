@@ -9,10 +9,10 @@
 #blog-list {
     display: flex;
     flex-direction: column;
-    max-width: 800px;
+    max-width: 720px;
     margin: 0 10px;
 
-    @media only screen and (min-width: 820px) {
+    @media only screen and (min-width: 740px) {
         margin: 0 auto;
     }
 }
@@ -27,7 +27,8 @@
     border-radius: 5px;
 
     .created {
-        color: #333;
+        color: #555;
+        font-style: italic;
         margin-top: 0px;
         margin-bottom: 8px;
     }
@@ -73,7 +74,7 @@
     }
 
     .content {
-        color: #555;
+        color: #444;
         max-width: 720px;
         margin: 0 10px;
         font-weight: 550;
