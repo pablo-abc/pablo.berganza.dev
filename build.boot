@@ -16,7 +16,7 @@
          '[clojure.string :as string])
 
 (task-options!
- pom {:project 'pablo.berganza.dev :version "0.1.1"})
+ pom {:project 'pablo.berganza.dev :version "0.1.2"})
 
 (defn blog? [file] (= "blog" (:type file)))
 
