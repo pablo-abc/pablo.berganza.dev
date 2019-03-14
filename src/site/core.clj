@@ -26,19 +26,23 @@
    [:div.right-nav
     [:a.nav-item
      {:href "https://github.com/pablo-abc"
-      :target "_blank" :rel "noopener noreferrer"}
+      :target "_blank" :rel "noopener noreferrer"
+      :title "GitHub"}
      [:i.fab.fa-github]]
     [:a.nav-item
      {:href "https://www.instagram.com/berganzapablo/"
-      :target "_blank" :rel "noopener noreferrer"}
+      :target "_blank" :rel "noopener noreferrer"
+      :title "Instagram"}
      [:i.fab.fa-instagram]]
     [:a.nav-item
      {:href "https://www.facebook.com/Pablo.ABC"
-      :target "_blank" :rel "noopener noreferrer"}
+      :target "_blank" :rel "noopener noreferrer"
+      :title "Facebook"}
      [:i.fab.fa-facebook]]
     [:a.nav-item
      {:href "https://twitter.com/Pablo_ABC"
-      :target "_blank" :rel "noopener noreferrer"}
+      :target "_blank" :rel "noopener noreferrer"
+      :title "Twitter"}
      [:i.fab.fa-twitter]]]])
 
 (defn head
