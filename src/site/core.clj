@@ -82,7 +82,7 @@
            [:section.about-me
             [:h2 "About Me"]
             [:p "Hello! I am a Computer Science graduate"
-             "now working mostly as a web developer."]
+             " now working mostly as a web developer."]
             [:p "I have mostly worked developing back-end services for "
              "web and mobile applications. But I also have some experience"
              " developing web applications using ClojureScript, ReactJS,"
