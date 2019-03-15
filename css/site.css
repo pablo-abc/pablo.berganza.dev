@@ -498,7 +498,8 @@ nav {
     margin-top: 0px;
     margin-bottom: 8px; }
   .blog-item .introduction {
-    margin: 0px; }
+    margin: 0px;
+    color: #333; }
   .blog-item h3 {
     color: #E34495;
     margin: 0; }
@@ -523,11 +524,11 @@ nav {
     max-width: 720px;
     margin: 0 auto; }
   #blog .content {
-    color: #444;
     max-width: 720px;
     margin: 0 10px;
     font-weight: 550;
-    line-height: 1.2; }
+    line-height: 1.2;
+    color: #444; }
     @media only screen and (min-width: 740px) {
       #blog .content {
         margin: 0 auto; } }
@@ -584,8 +585,7 @@ body {
   font-family: "Overpass", "Helvetica Neue", Verdana, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   font-size: 1.125em;
-  color: #333;
-  background-color: #FFF;
+  color: #555;
   color: #DA2280;
   margin: 0;
   -moz-osx-font-smoothing: grayscale;
