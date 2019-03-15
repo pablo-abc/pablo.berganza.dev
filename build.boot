@@ -27,7 +27,7 @@
 (def spanish? (partial lang? "es"))
 
 (defn translate [global {permalink :permalink lang :lang}]
-  (if (= lang "en")
+  (if (or (= lang "en") (nil? lang))
     permalink
     (str "/" lang
          (string/join
@@ -43,8 +43,7 @@
         (perun/global-metadata)
         (perun/markdown)
         (perun/ttr)
-        (perun/permalink :permalink-fn translate
-                         :extensions [".html" ".html"])
+        (perun/permalink :permalink-fn translate)
         (perun/permalink :filterer (complement index?))))
 
 (deftask render

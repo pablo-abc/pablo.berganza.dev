@@ -35,6 +35,7 @@
 
     .introduction {
         margin: 0px;
+        color: #333;
     }
 
     h3 {
@@ -74,11 +75,11 @@
     }
 
     .content {
-        color: #444;
         max-width: 720px;
         margin: 0 10px;
         font-weight: 550;
         line-height: 1.2;
+        color: #444;
 
         @media only screen and (min-width: 740px) {
             margin: 0 auto;
