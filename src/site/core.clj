@@ -1,5 +1,6 @@
 (ns site.core
-  (:require [hiccup.page :as hp :refer [include-css]]))
+  (:require [hiccup.page :as hp :refer [include-css]]
+            [clojure.string :as string]))
 
 (def ability-images
   '(["https://cdn.svgporn.com/logos/javascript.svg" "JavaScript"]
@@ -113,6 +114,9 @@
                        (ability-colors (count ability-images)))
                   :section.box-abilities))]]))
 
+(defn- date->num [entry]
+  (Integer/valueOf (string/replace (:created entry) #"-" "")))
+
 (defn blogs [{:keys [entries meta]}]
   (render "Blog" meta
           [:section.blog-posts
@@ -120,7 +124,7 @@
             [:h1 "Blog"]]
            [:section#blog-list
             (if (pos? (count entries))
-              (for [blog (sort-by :index entries)]
+              (for [blog (sort-by date->num > entries)]
                 [:a.blog-item {:href (:permalink blog)}
                  [:article
                   [:h3 (:title blog)]
@@ -135,7 +139,9 @@
     [:header.title
      [:h1 (:title entry)]
      [:p.introduction (:introduction entry)]]
-    [:p.created  (:created entry)]
+    [:div.ttr-created
+     [:span.ttr [:i.far.fa-clock] " " (:ttr entry) " min"]
+     [:span.created [:i.far.fa-calendar-alt] " " (:created entry)]]
     (let [content (:content entry)]
       [:section.content content])]))
 

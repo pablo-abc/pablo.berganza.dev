@@ -18,23 +18,30 @@
 (task-options!
  pom {:project 'pablo.berganza.dev :version "0.1.2"})
 
-(defn blog? [file] (= "blog" (:type file)))
+(defn blog? [file] (re-find #"/blog/" (:permalink file)))
 
-(defn lang? [lang file] (= lang (:lang file)))
+(defn get-lang [file]
+  (condp re-find (:permalink file)
+    #"^/es/" :es
+    :en))
 
-(def english? (partial lang? "en"))
+(defn lang? [lang file]
+  (= lang (get-lang file)))
 
-(def spanish? (partial lang? "es"))
+(def english? (partial lang? :en))
+
+(def spanish? (partial lang? :es))
 
 (defn translate [global {permalink :permalink lang :lang}]
   (if (or (= lang "en") (nil? lang))
     permalink
     (str "/" lang
-         (string/join
-          (string/split permalink
-                        (re-pattern (str "\\." lang)))))))
+         (string/replace permalink (re-pattern (str "\\." lang)) ""))))
 
 (defn index? [file] (= "index" (:slug file)))
+
+(defn rm-dir-date [global {permalink :permalink}]
+  (string/replace permalink #"[0-9]{4}-[0-9]{2}-[0-9]{2}-" ""))
 
 (deftask build
   "Builds files"
@@ -44,12 +51,14 @@
         (perun/markdown)
         (perun/ttr)
         (perun/permalink :permalink-fn translate)
+        (perun/permalink :permalink-fn rm-dir-date)
         (perun/permalink :filterer (complement index?))))
 
 (deftask render
   "Render files"
   []
   (comp (perun/render :renderer 'site.core/blog :filterer blog?)
+        (perun/highlight :filterer blog?)
         (perun/static :renderer 'site.core/home :page "index.html")
         (perun/static :renderer 'site.core/contact
                       :page "contact/index.html")

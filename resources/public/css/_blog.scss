@@ -66,21 +66,21 @@
         padding: 0 0 16px 0;
     }
 
-    .created {
-        font-style: italic;
-        text-align: right;
-        width: 95%;
+    .ttr-created {
+        display: flex;
         max-width: 720px;
-        margin: 0 auto;
+        justify-content: space-between;
     }
 
     .content {
         max-width: 720px;
-        margin: 0 10px;
         font-weight: 550;
         line-height: 1.2;
         color: #444;
+    }
 
+    .content, .ttr-created {
+        margin: 0 10px;
         @media only screen and (min-width: 740px) {
             margin: 0 auto;
         }
