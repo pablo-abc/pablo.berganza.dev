@@ -73,7 +73,7 @@
      (navbar)]
     (into [:section#page] content)]))
 
-(defn page [{:keys [entry meta] :as obj}]
+(defn page [{:keys [entry meta]}]
   (render (:title entry) meta
           [:h1 (:title entry)]
           [:p (:content entry)]))

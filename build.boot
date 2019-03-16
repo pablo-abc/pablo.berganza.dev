@@ -48,7 +48,7 @@
   []
   (comp (sass)
         (perun/global-metadata)
-        (perun/markdown)
+        (perun/markdown :md-exts {:smartypants true})
         (perun/ttr)
         (perun/permalink :permalink-fn translate)
         (perun/permalink :permalink-fn rm-dir-date)

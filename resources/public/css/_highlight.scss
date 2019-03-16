@@ -1,21 +1,21 @@
 /* Dracula Theme v1.2.5
- *
- * https://github.com/zenorocha/dracula-theme
- *
- * Copyright 2016, All rights reserved
- *
- * Code licensed under the MIT license
- * http://zenorocha.mit-license.org
- *
- * @author Rob G <wowmotty@gmail.com>
- * @author Chris Bracco <chris@cbracco.me>
- * @author Zeno Rocha <hi@zenorocha.com>
- * @author Piruin Panichphol <piruin.p@gmail.com>
- */
+*
+* https://github.com/zenorocha/dracula-theme
+*
+* Copyright 2016, All rights reserved
+*
+* Code licensed under the MIT license
+* http://zenorocha.mit-license.org
+*
+* @author Rob G <wowmotty@gmail.com>
+* @author Chris Bracco <chris@cbracco.me>
+* @author Zeno Rocha <hi@zenorocha.com>
+* @author Piruin Panichphol <piruin.p@gmail.com>
+*/
 
 /*
- * Variables
- */
+* Variables
+*/
 
 $dt-gray-dark: #282a36;  // Background
 $dt-gray: #44475a;       // Current Line & Selection
@@ -30,144 +30,144 @@ $dt-red: #ff5555;
 $dt-yellow: #f1fa8c;
 
 /*
- * Styles
- */
+* Styles
+*/
 
 pre {
     padding: 10px;
     border-left: 5px solid $color-primary-2;
-    border-radius: 10px;    
+    border-radius: 10px;
 }
 
 code.highlight, pre {
-  background: $dt-gray-dark;
-  color: $dt-gray-light;
-
-  .hll,
-  .s,
-  .sa,
-  .sb,
-  .sc,
-  .dl,
-  .sd,
-  .s2,
-  .se,
-  .sh,
-  .si,
-  .sx,
-  .sr,
-  .s1,
-  .ss {
-    color: $dt-yellow;
-  }
-
-  .go {
-    color: $dt-gray;
-  }
-
-  .err,
-  .g,
-  .l,
-  .n,
-  .x,
-  .p,
-  .ge,
-  .gr,
-  .gh,
-  .gi,
-  .gp,
-  .gs,
-  .gu,
-  .gt,
-  .ld,
-  .no,
-  .nd,
-  .ni,
-  .ne,
-  .nn,
-  .nx,
-  .py,
-  .w,
-  .bp {
+    background: $dt-gray-dark;
     color: $dt-gray-light;
-  }
 
-  .gh,
-  .gi,
-  .gu {
-    font-weight: bold;
-  }
+    .hll,
+    .s,
+    .sa,
+    .sb,
+    .sc,
+    .dl,
+    .sd,
+    .s2,
+    .se,
+    .sh,
+    .si,
+    .sx,
+    .sr,
+    .s1,
+    .ss {
+        color: $dt-yellow;
+    }
 
-  .ge {
-    text-decoration: underline;
-  }
+    .go {
+        color: $dt-gray;
+    }
 
-  .bp {
-    font-style: italic;
-  }
+    .err,
+    .g,
+    .l,
+    .n,
+    .x,
+    .p,
+    .ge,
+    .gr,
+    .gh,
+    .gi,
+    .gp,
+    .gs,
+    .gu,
+    .gt,
+    .ld,
+    .no,
+    .nd,
+    .ni,
+    .ne,
+    .nn,
+    .nx,
+    .py,
+    .w,
+    .bp {
+        color: $dt-gray-light;
+    }
 
-  .c,
-  .ch,
-  .cm,
-  .cpf,
-  .c1,
-  .cs {
-    color: $dt-blue;
-  }
+    .gh,
+    .gi,
+    .gu {
+        font-weight: bold;
+    }
 
-  .kd,
-  .kt,
-  .nb,
-  .nl,
-  .nv,
-  .vc,
-  .vg,
-  .vi,
-  .vm {
-    color: $dt-cyan;
-  }
+    .ge {
+        text-decoration: underline;
+    }
 
-  .kd,
-  .nb,
-  .nl,
-  .nv,
-  .vc,
-  .vg,
-  .vi,
-  .vm {
-    font-style: italic;
-  }
+    .bp {
+        font-style: italic;
+    }
 
-  .na,
-  .nc,
-  .nf,
-  .fm {
-    color: $dt-green;
-  }
+    .c,
+    .ch,
+    .cm,
+    .cpf,
+    .c1,
+    .cs {
+        color: $dt-blue;
+    }
 
-  .k,
-  .o,
-  .cp,
-  .kc,
-  .kn,
-  .kp,
-  .kr,
-  .nt,
-  .ow {
-    color: $dt-pink;
-  }
+    .kd,
+    .kt,
+    .nb,
+    .nl,
+    .nv,
+    .vc,
+    .vg,
+    .vi,
+    .vm {
+        color: $dt-cyan;
+    }
 
-  .m,
-  .mb,
-  .mf,
-  .mh,
-  .mi,
-  .mo,
-  .il {
-    color: $dt-purple;
-  }
+    .kd,
+    .nb,
+    .nl,
+    .nv,
+    .vc,
+    .vg,
+    .vi,
+    .vm {
+        font-style: italic;
+    }
 
-  .gd {
-    color: $dt-red;
-  }
+    .na,
+    .nc,
+    .nf,
+    .fm {
+        color: $dt-green;
+    }
+
+    .k,
+    .o,
+    .cp,
+    .kc,
+    .kn,
+    .kp,
+    .kr,
+    .nt,
+    .ow {
+        color: $dt-pink;
+    }
+
+    .m,
+    .mb,
+    .mf,
+    .mh,
+    .mi,
+    .mo,
+    .il {
+        color: $dt-purple;
+    }
+
+    .gd {
+        color: $dt-red;
+    }
 }
