@@ -83,21 +83,29 @@
        [:i.fab.fa-twitter]]]]))
 
 (defn head [title meta entry]
-  [:head
-   [:meta {:charset "utf-8"}]
-   [:meta {:name "viewport"
-           :content "width=device-width, initial-scale=1"}]
-   [:meta {:name "author"
-           :content (:author meta)}]
-   [:meta {:name "description"
-           :content "Personal site and blog for Pablo Berganza."}]
-   [:title (str title " | " (:site-title meta))]
-   [:link {:type "text/css"
-           :crossorigin "anonymous"
-           :integrity "sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
-           :href "https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-           :rel "stylesheet"}]
-   (include-css "/css/site.css")])
+  (let [lang (or (keyword (:lang meta)) :en)]
+    [:head
+     [:meta {:charset "utf-8"}]
+     [:meta {:name "viewport"
+             :content "width=device-width, initial-scale=1"}]
+     [:meta {:name "author"
+             :content (:author meta)}]
+     [:meta {:name "description"
+             :content (or
+                       (:introduction entry)
+                       (if (= lang :en)
+                         "Personal site and blog for Pablo Berganza."
+                         "Sitio y blog personal de Pablo Berganza."))}]
+     [:link {:href (get-alt-link meta entry)
+             :rel "alternate"
+             :hreflang (if (= lang :en) "es" "en")}]
+     [:title (str title " | " (:site-title meta))]
+     [:link {:type "text/css"
+             :crossorigin "anonymous"
+             :integrity "sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+             :href "https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+             :rel "stylesheet"}]
+     (include-css "/css/site.css")]))
 
 (defn render [title meta entry & content]
   (hp/html5 {:lang (or (:lang meta) "en")}
