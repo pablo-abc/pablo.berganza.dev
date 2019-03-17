@@ -72,10 +72,10 @@
         :title "Instagram"}
        [:i.fab.fa-instagram]]
       [:a.nav-item.sm
-       {:href "https://www.facebook.com/Pablo.ABC"
+       {:href "https://www.linkedin.com/in/PabloABC"
         :target "_blank" :rel "noopener noreferrer"
         :title "Facebook"}
-       [:i.fab.fa-facebook]]
+       [:i.fab.fa-linkedin]]
       [:a.nav-item.sm
        {:href "https://twitter.com/Pablo_ABC"
         :target "_blank" :rel "noopener noreferrer"
@@ -201,8 +201,8 @@
        [:a {:href "https://www.instagram.com/berganzapablo/"
             :target "_blank" :rel "noopener noreferrer"}
         "Instagram"]]
-      [:dd [:i.fab.fa-facebook] " "
-       [:a {:href "https://www.facebook.com/Pablo.ABC" :target "_blank"
+      [:dd [:i.fab.fa-linkedin] " "
+       [:a {:href "https://www.linkedin.com/in/PabloABC" :target "_blank"
             :rel "noopener noreferrer"}
         "Facebook"]]
       [:dt (:email entry)]
