@@ -11,80 +11,109 @@
     ["https://cdn.svgporn.com/logos/python.svg" "Python"]
     ["https://cdn.svgporn.com/logos/docker.svg" "Docker"]))
 
+(defn get-lang [entry]
+  (condp re-find (:permalink entry)
+    #"^/es/" :es
+    :en))
+
+(defn get-alt-link [meta entry]
+  (let [lang (:lang meta)]
+    (if (or (= lang "en") (nil? lang))
+      (str "/es" (:permalink entry))
+      (string/replace (:permalink entry) #"^/es" ""))))
+
+(get-alt-link {:link-prefix ""
+               :lang "en"}
+              {:permalink "/blog"})
+
+(defn- add-language [meta entry]
+  (let [lang (name (get-lang entry))]
+    (-> meta
+       (assoc :lang lang)
+       (assoc :link-prefix (if (= "en" lang)
+                             ""
+                             (str "/" lang))))))
+
 (defn- ability-colors [quantity]
   (flatten
    (map vector
         (repeat quantity "color-1") (repeat quantity "color-2"))))
 
-(defn navbar []
-  [:nav
-   [:div.left-nav
-    [:div.logo
-     [:a#logo {:href "/"} "Pablo Berganza"]]
-    [:div.nav-items
-     [:a.nav-item {:href "/blog"} "Blog"] " | "
-     [:a.nav-item {:href "/contact"} "Contact me"]]]
-   [:div.right-nav
-    [:a.nav-item
-     {:href "https://github.com/pablo-abc"
-      :target "_blank" :rel "noopener noreferrer"
-      :title "GitHub"}
-     [:i.fab.fa-github]]
-    [:a.nav-item
-     {:href "https://www.instagram.com/berganzapablo/"
-      :target "_blank" :rel "noopener noreferrer"
-      :title "Instagram"}
-     [:i.fab.fa-instagram]]
-    [:a.nav-item
-     {:href "https://www.facebook.com/Pablo.ABC"
-      :target "_blank" :rel "noopener noreferrer"
-      :title "Facebook"}
-     [:i.fab.fa-facebook]]
-    [:a.nav-item
-     {:href "https://twitter.com/Pablo_ABC"
-      :target "_blank" :rel "noopener noreferrer"
-      :title "Twitter"}
-     [:i.fab.fa-twitter]]]])
+(def navbar-links {:en {:blog "Blog"
+                        :contact "Contact Me"}
+                   :es {:blog "Blog"
+                        :contact "Contáctame"}})
 
-(defn head
-  ([title meta] (head title meta nil))
-  ([title meta entry]
-   [:head
-    [:meta {:charset "utf-8"}]
-    [:meta {:name "viewport"
-            :content "width=device-width, initial-scale=1"}]
-    [:meta {:name "author"
-            :content (:author meta)}]
-    [:meta {:name "description"
-            :content "Personal site and blog for Pablo Berganza."}]
-    [:title (str title " | " (:site-title meta))]
-    [:link {:type "text/css"
-            :crossorigin "anonymous"
-            :integrity "sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
-            :href "https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-            :rel "stylesheet"}]
-    (include-css "/css/site.css")]))
+(defn navbar [meta entry]
+  (let [prefix (or (:link-prefix meta) "")
+        lang (or (keyword (:lang meta)) :en)]
+    [:nav
+     [:div.left-nav
+      [:div.logo
+       [:a#logo {:href (str prefix "/")}
+        [:span "Pablo"]
+        [:span "Berganza"]]]
+      [:div.nav-items
+       [:a.nav-item {:href (str prefix "/blog")}
+        (:blog (lang navbar-links))] " | "
+       [:a.nav-item {:href (str prefix "/contact")}
+        (:contact (lang navbar-links))]]]
+     [:div.right-nav
+      [:a.nav-item {:href (get-alt-link meta entry)}
+       (if (= lang :en) "es" "en")]
+      [:a.nav-item.sm
+       {:href "https://github.com/pablo-abc"
+        :target "_blank" :rel "noopener noreferrer"
+        :title "GitHub"}
+       [:i.fab.fa-github]]
+      [:a.nav-item.sm
+       {:href "https://www.instagram.com/berganzapablo/"
+        :target "_blank" :rel "noopener noreferrer"
+        :title "Instagram"}
+       [:i.fab.fa-instagram]]
+      [:a.nav-item.sm
+       {:href "https://www.facebook.com/Pablo.ABC"
+        :target "_blank" :rel "noopener noreferrer"
+        :title "Facebook"}
+       [:i.fab.fa-facebook]]
+      [:a.nav-item.sm
+       {:href "https://twitter.com/Pablo_ABC"
+        :target "_blank" :rel "noopener noreferrer"
+        :title "Twitter"}
+       [:i.fab.fa-twitter]]]]))
 
-(defn render [title title-site & content]
-  (hp/html5 {:lang "en"}
-   (head title title-site)
-   [:body
-    [:header#nav-menu
-     (navbar)]
-    (into [:section#page] content)]))
+(defn head [title meta entry]
+  [:head
+   [:meta {:charset "utf-8"}]
+   [:meta {:name "viewport"
+           :content "width=device-width, initial-scale=1"}]
+   [:meta {:name "author"
+           :content (:author meta)}]
+   [:meta {:name "description"
+           :content "Personal site and blog for Pablo Berganza."}]
+   [:title (str title " | " (:site-title meta))]
+   [:link {:type "text/css"
+           :crossorigin "anonymous"
+           :integrity "sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+           :href "https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+           :rel "stylesheet"}]
+   (include-css "/css/site.css")])
 
-(defn page [{:keys [entry meta]}]
-  (render (:title entry) meta
-          [:h1 (:title entry)]
-          [:p (:content entry)]))
+(defn render [title meta entry & content]
+  (hp/html5 {:lang (or (:lang meta) "en")}
+            (head title meta entry)
+            [:body
+             [:header#nav-menu
+              (navbar meta entry)]
+             (into [:section#page] content)]))
 
 (defn- home-img-attr [attr]
   (-> {}
      (assoc :src (attr 0))
      (assoc :alt (attr 1))))
 
-(defn home [{:keys [meta]}]
-  (render "Home" meta
+(defn home [{:keys [meta entry]}]
+  (render "Home" (add-language meta entry) entry
           [:section.main
            [:section.main-info
             [:div#profile-box
@@ -94,18 +123,12 @@
                                           "ht=scontent.fsal2-1.fna&oh=6c0dc7645989"
                                           "74ffae0215fb767e92b6&oe=5CB5AD16")
                                 :alt "Profile picture"}]
-             [:h3#profile-bubble "Hi, I make web stuff! Welcome!"]]]
+             [:h3#profile-bubble (:welcome entry)]]]
            [:section.about-me
-            [:h2 "About Me"]
-            [:p "Hello! I am a Computer Sciencist,"
-             " now mostly working as a web developer."]
-            [:p "Most of my work has been developing back-end services"
-             " for web and mobile applications. But I also have some"
-             " experience developing web applications using ClojureScript,"
-             " ReactJS, and VueJS."]
-            [:p "Welcome to my site!"]]
+            [:h2 (:aboutme entry)]
+            (:content entry)]
            [:section.abilities
-            [:h2 "My Abilities"]
+            [:h2 (:myabilities entry)]
             (vec (conj
                   (map #(vector :section.ability {:class %2}
                                 [:img
@@ -117,8 +140,8 @@
 (defn- date->num [entry]
   (Integer/valueOf (string/replace (:created entry) #"-" "")))
 
-(defn blogs [{:keys [entries meta]}]
-  (render "Blog" meta
+(defn blogs [{:keys [entries meta entry]}]
+  (render "Blog" (add-language meta entry) entry
           [:section.blog-posts
            [:header.title
             [:h1 "Blog"]]
@@ -128,13 +151,15 @@
                 [:a.blog-item {:href (:permalink blog)}
                  [:article
                   [:h3 (:title blog)]
-                  [:p.created (:created blog)]
+                  [:p.ttr-created
+                   [:span.ttr [:i.far.fa-clock] " " (:ttr blog) " min"]
+                   [:span.created [:i.far.fa-calendar-alt] " " (:created blog)]]
                   [:p.introduction (:introduction blog)]]])
               [:h2 "It seems there's nothing here... yet."])]]))
 
 (defn blog [{:keys [entry meta]}]
   (render
-   (:title entry) meta
+   (:title entry) (add-language meta entry) entry
    [:article#blog
     [:header.title
      [:h1 (:title entry)]
@@ -145,19 +170,16 @@
     (let [content (:content entry)]
       [:section.content content])]))
 
-(defn contact [{:keys [meta]}]
+(defn contact [{:keys [meta entry]}]
   (render
-   "Contact Me" meta
+   "Contact Me" (add-language meta entry) entry
    [:section.contact
     [:header.title
-     [:h1 "Contact Me"]]
+     [:h1 (:contactme entry)]]
     [:section
-     [:p "If you have an idea you would like to give life to,"
-      " like a web site or a web application,"
-      " I can help you make it. You can contact me via any of"
-      " the following:"]
+     [:p (:content entry)]
      [:dl
-      [:dt "Social Media"]
+      [:dt (:socialmedia entry)]
       [:dd
        [:i.fab.fa-github] " "
        [:a {:href "https://github.com/pablo-abc" :target "_blank"
@@ -175,17 +197,17 @@
        [:a {:href "https://www.facebook.com/Pablo.ABC" :target "_blank"
             :rel "noopener noreferrer"}
         "Facebook"]]
-      [:dt "E-Mail"]
+      [:dt (:email entry)]
       [:dd
        [:i.fas.fa-envelope] " "
        [:a
-        {:href "mailto:pablo@berganza.dev?subject=[SITE]%20Consultation"}
+        {:href "mailto:pablo@berganza.dev"}
         "pablo@berganza.dev"]]]]]))
 
 
-(defn not-found [{:keys [meta]}]
+(defn not-found [{:keys [meta entry]}]
   (render
-   "Not Found" meta
+   "Not Found" meta entry
    [:section.not-found
     [:header
      [:h1 "404"]]

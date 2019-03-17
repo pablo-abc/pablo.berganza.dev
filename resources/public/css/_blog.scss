@@ -26,11 +26,16 @@
     padding: 8px;
     border-radius: 5px;
 
-    .created {
+    .ttr-created {
+        display: flex;
         color: #555;
         font-style: italic;
         margin-top: 0px;
         margin-bottom: 8px;
+    }
+
+    .ttr {
+        margin-right: 24px;
     }
 
     .introduction {
@@ -90,5 +95,21 @@
         .content {
             line-height: 1.5;
         }
+    }
+
+    blockquote {
+        padding: 8px 40px;
+        margin: 8px 40px;
+        background-color: lighten($color-primary-1, 20%);
+        border-left: 5px solid $color-primary-2;
+        border-radius: 10px;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    pre {
+        margin: 8px 40px;
     }
 }
