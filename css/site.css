@@ -1,3 +1,221 @@
+/* Dracula Theme v1.2.5
+*
+* https://github.com/zenorocha/dracula-theme
+*
+* Copyright 2016, All rights reserved
+*
+* Code licensed under the MIT license
+* http://zenorocha.mit-license.org
+*
+* @author Rob G <wowmotty@gmail.com>
+* @author Chris Bracco <chris@cbracco.me>
+* @author Zeno Rocha <hi@zenorocha.com>
+* @author Piruin Panichphol <piruin.p@gmail.com>
+*/
+/*
+* Variables
+*/
+/*
+* Styles
+*/
+pre {
+  display: flex;
+  padding: 10px;
+  border-left: 5px solid #EC69AB;
+  border-radius: 10px;
+  white-space: pre-wrap;
+  /* css-3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* Internet Explorer 5.5+ */ }
+
+code.highlight, pre {
+  background: #282a36;
+  color: #f8f8f2; }
+  code.highlight .hll,
+  code.highlight .s,
+  code.highlight .sa,
+  code.highlight .sb,
+  code.highlight .sc,
+  code.highlight .dl,
+  code.highlight .sd,
+  code.highlight .s2,
+  code.highlight .se,
+  code.highlight .sh,
+  code.highlight .si,
+  code.highlight .sx,
+  code.highlight .sr,
+  code.highlight .s1,
+  code.highlight .ss, pre .hll,
+  pre .s,
+  pre .sa,
+  pre .sb,
+  pre .sc,
+  pre .dl,
+  pre .sd,
+  pre .s2,
+  pre .se,
+  pre .sh,
+  pre .si,
+  pre .sx,
+  pre .sr,
+  pre .s1,
+  pre .ss {
+    color: #f1fa8c; }
+  code.highlight .go, pre .go {
+    color: #44475a; }
+  code.highlight .err,
+  code.highlight .g,
+  code.highlight .l,
+  code.highlight .n,
+  code.highlight .x,
+  code.highlight .p,
+  code.highlight .ge,
+  code.highlight .gr,
+  code.highlight .gh,
+  code.highlight .gi,
+  code.highlight .gp,
+  code.highlight .gs,
+  code.highlight .gu,
+  code.highlight .gt,
+  code.highlight .ld,
+  code.highlight .no,
+  code.highlight .nd,
+  code.highlight .ni,
+  code.highlight .ne,
+  code.highlight .nn,
+  code.highlight .nx,
+  code.highlight .py,
+  code.highlight .w,
+  code.highlight .bp, pre .err,
+  pre .g,
+  pre .l,
+  pre .n,
+  pre .x,
+  pre .p,
+  pre .ge,
+  pre .gr,
+  pre .gh,
+  pre .gi,
+  pre .gp,
+  pre .gs,
+  pre .gu,
+  pre .gt,
+  pre .ld,
+  pre .no,
+  pre .nd,
+  pre .ni,
+  pre .ne,
+  pre .nn,
+  pre .nx,
+  pre .py,
+  pre .w,
+  pre .bp {
+    color: #f8f8f2; }
+  code.highlight .gh,
+  code.highlight .gi,
+  code.highlight .gu, pre .gh,
+  pre .gi,
+  pre .gu {
+    font-weight: bold; }
+  code.highlight .ge, pre .ge {
+    text-decoration: underline; }
+  code.highlight .bp, pre .bp {
+    font-style: italic; }
+  code.highlight .c,
+  code.highlight .ch,
+  code.highlight .cm,
+  code.highlight .cpf,
+  code.highlight .c1,
+  code.highlight .cs, pre .c,
+  pre .ch,
+  pre .cm,
+  pre .cpf,
+  pre .c1,
+  pre .cs {
+    color: #6272a4; }
+  code.highlight .kd,
+  code.highlight .kt,
+  code.highlight .nb,
+  code.highlight .nl,
+  code.highlight .nv,
+  code.highlight .vc,
+  code.highlight .vg,
+  code.highlight .vi,
+  code.highlight .vm, pre .kd,
+  pre .kt,
+  pre .nb,
+  pre .nl,
+  pre .nv,
+  pre .vc,
+  pre .vg,
+  pre .vi,
+  pre .vm {
+    color: #8be9fd; }
+  code.highlight .kd,
+  code.highlight .nb,
+  code.highlight .nl,
+  code.highlight .nv,
+  code.highlight .vc,
+  code.highlight .vg,
+  code.highlight .vi,
+  code.highlight .vm, pre .kd,
+  pre .nb,
+  pre .nl,
+  pre .nv,
+  pre .vc,
+  pre .vg,
+  pre .vi,
+  pre .vm {
+    font-style: italic; }
+  code.highlight .na,
+  code.highlight .nc,
+  code.highlight .nf,
+  code.highlight .fm, pre .na,
+  pre .nc,
+  pre .nf,
+  pre .fm {
+    color: #50fa7b; }
+  code.highlight .k,
+  code.highlight .o,
+  code.highlight .cp,
+  code.highlight .kc,
+  code.highlight .kn,
+  code.highlight .kp,
+  code.highlight .kr,
+  code.highlight .nt,
+  code.highlight .ow, pre .k,
+  pre .o,
+  pre .cp,
+  pre .kc,
+  pre .kn,
+  pre .kp,
+  pre .kr,
+  pre .nt,
+  pre .ow {
+    color: #ff79c6; }
+  code.highlight .m,
+  code.highlight .mb,
+  code.highlight .mf,
+  code.highlight .mh,
+  code.highlight .mi,
+  code.highlight .mo,
+  code.highlight .il, pre .m,
+  pre .mb,
+  pre .mf,
+  pre .mh,
+  pre .mi,
+  pre .mo,
+  pre .il {
+    color: #bd93f9; }
+  code.highlight .gd, pre .gd {
+    color: #ff5555; }
+
 /* latin-ext */
 @font-face {
   font-family: 'Overpass';
@@ -326,18 +544,25 @@ nav {
   align-items: center;
   line-height: 1.3; }
   nav div {
-    display: inline-block; }
+    display: inline; }
     nav div.left-nav {
-      flex: 1; }
+      flex: 1;
+      display: flex;
+      flex-direction: column; }
+      @media only screen and (min-width: 530px) {
+        nav div.left-nav {
+          flex-direction: row;
+          align-items: center; } }
     nav div.right-nav {
       display: flex;
-      flex-direction: column;
       align-items: center; }
-      @media only screen and (min-width: 290px) {
-        nav div.right-nav {
-          flex-direction: row; } }
       nav div.right-nav a {
         margin: 5px; }
+  nav .sm {
+    display: none; }
+    @media only screen and (min-width: 320px) {
+      nav .sm {
+        display: flex; } }
   nav a.nav-item {
     text-decoration: none;
     color: #7F4ACD;
@@ -351,19 +576,21 @@ nav {
     margin-right: 10px;
     color: #E34495;
     font-weight: bold;
-    font-size: 1.5em; }
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column; }
+    @media only screen and (min-width: 352px) {
+      nav a#logo {
+        flex-direction: row; } }
     nav a#logo:hover {
       color: #F499C7; }
 
 #page {
-  margin-top: 148px; }
-  @media only screen and (min-width: 290px) {
+  margin-top: 107px; }
+  @media only screen and (min-width: 352px) {
     #page {
-      margin-top: 107px; } }
-  @media only screen and (min-width: 342px) {
-    #page {
-      margin-top: 73px; } }
-  @media only screen and (min-width: 495px) {
+      margin-top: 77px; } }
+  @media only screen and (min-width: 530px) {
     #page {
       margin-top: 50px; } }
 
@@ -373,14 +600,11 @@ nav {
   width: 100%;
   background-color: #fce3ef;
   opacity: 0.9;
-  max-height: 148px; }
-  @media only screen and (min-width: 290px) {
+  max-height: 107px; }
+  @media only screen and (min-width: 352px) {
     #nav-menu {
-      max-height: 107px; } }
-  @media only screen and (min-width: 342px) {
-    #nav-menu {
-      max-height: 73px; } }
-  @media only screen and (min-width: 495px) {
+      max-height: 77px; } }
+  @media only screen and (min-width: 530px) {
     #nav-menu {
       max-height: 50px; } }
 
@@ -492,11 +716,14 @@ nav {
   margin-top: 16px;
   padding: 8px;
   border-radius: 5px; }
-  .blog-item .created {
+  .blog-item .ttr-created {
+    display: flex;
     color: #555;
     font-style: italic;
     margin-top: 0px;
     margin-bottom: 8px; }
+  .blog-item .ttr {
+    margin-right: 24px; }
   .blog-item .introduction {
     margin: 0px;
     color: #333; }
@@ -517,24 +744,33 @@ nav {
     margin: 0;
     color: white;
     padding: 0 0 16px 0; }
-  #blog .created {
-    font-style: italic;
-    text-align: right;
-    width: 95%;
+  #blog .ttr-created {
+    display: flex;
     max-width: 720px;
-    margin: 0 auto; }
+    justify-content: space-between; }
   #blog .content {
     max-width: 720px;
-    margin: 0 10px;
     font-weight: 550;
     line-height: 1.2;
     color: #444; }
+  #blog .content, #blog .ttr-created {
+    margin: 0 10px; }
     @media only screen and (min-width: 740px) {
-      #blog .content {
+      #blog .content, #blog .ttr-created {
         margin: 0 auto; } }
   @media only screen and (min-width: 600px) {
     #blog .content {
       line-height: 1.5; } }
+  #blog blockquote {
+    padding: 8px 40px;
+    margin: 8px 40px;
+    background-color: #fef5fa;
+    border-left: 5px solid #EC69AB;
+    border-radius: 10px; }
+    #blog blockquote p {
+      margin: 0; }
+  #blog pre {
+    margin: 8px 40px; }
 
 .contact i {
   color: #7F4ACD; }
