@@ -111,15 +111,16 @@
      [:meta {:name "twitter:creator" :content "Pablo_ABC"}]
      (when (:banner entry)
        [:meta {:name "twitter:image:src" :content (:banner entry)}])
-     [:meta {:name "og:title" :content full-title}]
-     [:meta {:name "og:url" :content url}]
-     [:meta {:name "og:site_name" :content (:site-title meta)}]
-     [:meta {:name "og:locale" :content lang}]
-     [:meta {:name "fb:admins" :content "1441268341"}]
-     [:meta {:name "fb:app_id" :content "2097322913669232"}]
-     [:meta {:name "og:type" :content "website"}]
+     [:meta {:property "og:title" :content full-title}]
+     [:meta {:property "og:url" :content url}]
+     [:meta {:property "og:site_name" :content (:site-title meta)}]
+     [:meta {:property "og:locale" :content lang}]
+     [:meta {:property "fb:admins" :content "1441268341"}]
+     [:meta {:property "fb:app_id" :content "2097322913669232"}]
+     [:meta {:property "og:type" :content "website"}]
+     [:meta {:property "article:author" :content (:author meta)}]
      (when (:banner entry)
-       [:meta {:name "og:image" :content (:banner entry)}])
+       [:meta {:property "og:image" :content (:banner entry)}])
      [:link {:href (get-alt-link meta entry)
              :rel "alternate"
              :hreflang (if (= lang :en) "es" "en")}]
