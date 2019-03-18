@@ -23,16 +23,14 @@ pre {
   padding: 10px;
   border-left: 5px solid #EC69AB;
   border-radius: 10px;
-  white-space: pre-wrap;
+  white-space: pre;
   /* css-3 */
-  white-space: -moz-pre-wrap;
+  white-space: -moz-pre;
   /* Mozilla, since 1999 */
-  white-space: -pre-wrap;
+  white-space: -pre;
   /* Opera 4-6 */
-  white-space: -o-pre-wrap;
-  /* Opera 7 */
-  word-wrap: break-word;
-  /* Internet Explorer 5.5+ */ }
+  white-space: -o-pre;
+  /* Opera 7 */ }
 
 code.highlight, pre {
   background: #282a36;
@@ -767,7 +765,8 @@ nav {
     #blog blockquote p {
       margin: 0; }
   #blog pre {
-    margin: 8px 40px; }
+    margin: 8px 40px;
+    overflow: auto; }
   #blog ul.share-buttons {
     max-width: 720px;
     margin: 0 auto;
@@ -792,6 +791,7 @@ nav {
   #blog .banner {
     display: block;
     margin: 0 auto 24px auto;
+    width: 95%;
     max-width: 720px;
     border-radius: 10px; }
 

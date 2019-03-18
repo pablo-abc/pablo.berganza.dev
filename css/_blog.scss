@@ -117,6 +117,7 @@
 
     pre {
         margin: 8px 40px;
+        overflow: auto;
     }
 
     ul.share-buttons {
@@ -149,6 +150,7 @@
     .banner {
         display: block;
         margin: 0 auto 24px auto;
+        width: 95%;
         max-width: 720px;
         border-radius: 10px;
     }
