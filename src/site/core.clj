@@ -97,6 +97,8 @@
         url (str (:base-url meta) (subs (or (:permalink entry) " ") 1))]
     [:head
      [:meta {:charset "utf-8"}]
+     [:meta {:name "pocket-site-verification"
+             :content "d7bd427abed5c350943503bc567601"}]
      [:meta {:name "viewport"
              :content "width=device-width, initial-scale=1"}]
      [:meta {:name "author"
@@ -205,8 +207,7 @@
 (defn share-buttons [meta entry]
   (let [lang (or (keyword (:lang meta)) :en)
         url (str (:base-url meta) (subs (or (:permalink entry) " ") 1))
-        encoded (url-encode url)
-        full-title (str (:title entry) " | " (:site-title meta))]
+        encoded (url-encode url)]
     [:ul {:class "share-buttons"}
      [:li (if (= lang :es) "Compártelo:" "Share this:")]
      [:li
