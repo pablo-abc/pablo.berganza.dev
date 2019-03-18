@@ -65,6 +65,10 @@
         padding: 8px 0 0 0;
     }
 
+    h2 {
+        color: $color-secondary-2-0;
+    }
+
     .introduction {
         margin: 0;
         color: white;
@@ -111,5 +115,27 @@
 
     pre {
         margin: 8px 40px;
+    }
+
+    ul.share-buttons {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    ul.share-buttons li {
+        margin: 10px;
+    }
+
+    ul.share-buttons .sr-only {
+        position: absolute;
+        clip: rect(1px 1px 1px 1px);
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0;
+        border: 0;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
     }
 }

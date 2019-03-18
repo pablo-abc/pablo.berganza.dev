@@ -1,5 +1,6 @@
 (ns site.core
   (:require [hiccup.page :as hp :refer [include-css]]
+            [hiccup.util :as hu :refer [url-encode]]
             [clojure.string :as string]))
 
 (def ability-images
@@ -83,7 +84,14 @@
        [:i.fab.fa-twitter]]]]))
 
 (defn head [title meta entry]
-  (let [lang (or (keyword (:lang meta)) :en)]
+  (let [lang (or (keyword (:lang meta)) :en)
+        full-title (str title " | " (:site-title meta))
+        description (or
+                     (:introduction entry)
+                     (if (= lang :en)
+                       "Personal site and blog for Pablo Berganza."
+                       "Sitio y blog personal de Pablo Berganza."))
+        url (str (:base-url meta) (subs (or (:permalink entry) " ") 1))]
     [:head
      [:meta {:charset "utf-8"}]
      [:meta {:name "viewport"
@@ -91,15 +99,25 @@
      [:meta {:name "author"
              :content (:author meta)}]
      [:meta {:name "description"
-             :content (or
-                       (:introduction entry)
-                       (if (= lang :en)
-                         "Personal site and blog for Pablo Berganza."
-                         "Sitio y blog personal de Pablo Berganza."))}]
+             :content description}]
+     [:meta {:itemprop "name" :content full-title}]
+     [:meta {:itemprop "description" :content description}]
+     [:meta {:name "twitter:card" :content "summary"}]
+     [:meta {:name "twitter:title" :content full-title}]
+     [:meta {:name "twitter:description" :content description}]
+     [:meta {:name "twitter:site" :content "Pablo_ABC"}]
+     [:meta {:name "twitter:creator" :content "Pablo_ABC"}]
+     [:meta {:name "og:title" :content full-title}]
+     [:meta {:name "og:url" :content url}]
+     [:meta {:name "og:site_name" :content (:site-title meta)}]
+     [:meta {:name "og:locale" :content lang}]
+     [:meta {:name "fb:admins" :content "1441268341"}]
+     [:meta {:name "fb:app_id" :content "2097322913669232"}]
+     [:meta {:name "og:type" :content "website"}]
      [:link {:href (get-alt-link meta entry)
              :rel "alternate"
              :hreflang (if (= lang :en) "es" "en")}]
-     [:title (str title " | " (:site-title meta))]
+     [:title full-title]
      [:link {:type "text/css"
              :crossorigin "anonymous"
              :integrity "sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
@@ -165,6 +183,72 @@
                   [:p.introduction (:introduction blog)]]])
               [:h2 "It seems there's nothing here... yet."])]]))
 
+(defn share-buttons [meta entry]
+  (let [lang (or (keyword (:lang meta)) :en)
+        url (str (:base-url meta) (subs (or (:permalink entry) " ") 1))
+        encoded (url-encode url)
+        full-title (str (:title entry) " | " (:site-title meta))]
+    [:ul {:class "share-buttons"}
+     [:li "Share this:"]
+     [:li
+      [:a {:href (str "https://www.facebook.com/sharer/sharer.php?u="
+                      encoded
+                      "&quote="
+                      (:introduction entry)),
+           :target "_blank",
+           :title "Share on Facebook"}
+       [:i {:class "fab fa-facebook-square fa-2x", :aria-hidden "true"}]
+       [:span {:class "sr-only"}
+        "Share on Facebook"]
+       ]]
+     [:li
+      [:a {:href (str "https://twitter.com/intent/tweet?source="
+                      encoded
+                      "&text="
+                      (:introduction entry)
+                      ":%20"
+                      encoded
+                      "&via=Pablo_ABC"),
+           :target "_blank", :title "Tweet"}
+       [:i {:class "fab fa-twitter-square fa-2x", :aria-hidden "true"}]
+       [:span {:class "sr-only"}
+        "Tweet"]
+       ]]
+     [:li
+      [:a {:href (str "https://getpocket.com/save?url="
+                      encoded
+                      "&title="
+                      (:title entry)),
+           :target "_blank", :title "Add to Pocket"}
+       [:i {:class "fab fab fa-get-pocket fa-2x", :aria-hidden "true"}]
+       [:span {:class "sr-only"}
+        "Add to Pocket"]
+       ]]
+     [:li
+      [:a {:href (str "http://www.reddit.com/submit?url="
+                      encoded
+                      "&title="
+                      (:title entry)),
+           :target "_blank", :title "Submit to Reddit"}
+       [:i {:class "fab fa-reddit-square fa-2x", :aria-hidden "true"}]
+       [:span {:class "sr-only"}
+        "Submit to Reddit"]
+       ]]
+     [:li
+      [:a {:href (str "http://www.linkedin.com/shareArticle?mini=true&url="
+                      encoded
+                      "&title="
+                      (:title entry)
+                      "&summary="
+                      (:introduction entry)
+                      "&source="
+                      encoded),
+           :target "_blank", :title "Share on LinkedIn"}
+       [:i {:class "fab fa-linkedin fa-2x", :aria-hidden "true"}]
+       [:span {:class "sr-only"}
+        "Share on LinkedIn"]
+       ]]]))
+
 (defn blog [{:keys [entry meta]}]
   (render
    (:title entry) (add-language meta entry) entry
@@ -176,7 +260,9 @@
      [:span.ttr [:i.far.fa-clock] " " (:ttr entry) " min"]
      [:span.created [:i.far.fa-calendar-alt] " " (:created entry)]]
     (let [content (:content entry)]
-      [:section.content content])]))
+      [:section.content content])
+    [:section.content
+     (share-buttons meta entry)]]))
 
 (defn contact [{:keys [meta entry]}]
   (render
