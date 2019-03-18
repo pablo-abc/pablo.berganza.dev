@@ -9,7 +9,7 @@ tags:
     - clojure
 ---
 
-For better or for worse, most of my digital life has followed a DIY path. One advantage of this DIY approach is that I got to learn how a lot of technologies work on a deeper level. On the other hand, I never managed to finish any of my personal projects because of that (after all, in most cases I was just trying to reinvent the wheel).
+For better or for worse, most of my digital life has followed a DIY path. One advantage of this DIY approach is that I got to learn how a lot of technologies work on a deeper level. On the other hand, I never managed to finish any of my personal projects because of this (after all, in most cases I was just trying to reinvent the wheel).
 
 The first project I tried to make was a digital newspaper (around 5-6 years ago). Since I wanted to feel like I was in control of what I was doing I ignored frameworks such as Symfony or Laravel, and WordPress was a definite no-no on my mind. So my stubborn self began working on it using plain PHP, even managing routes from scratch. You can obviously see why this project ended up in the shelf forever.
 
