@@ -83,6 +83,9 @@
         :title "Twitter"}
        [:i.fab.fa-twitter]]]]))
 
+(defn blog? [file]
+  (re-find #"/blog/" (or (:permalink file) "")))
+
 (defn head [title meta entry]
   (let [lang (or (keyword (:lang meta)) :en)
         full-title (str title " | " (:site-title meta))
@@ -114,11 +117,20 @@
      [:meta {:property "og:title" :content full-title}]
      [:meta {:property "og:url" :content url}]
      [:meta {:property "og:site_name" :content (:site-title meta)}]
+     [:meta {:property "og:description" :content description}]
      [:meta {:property "og:locale" :content lang}]
      [:meta {:property "fb:admins" :content "1441268341"}]
      [:meta {:property "fb:app_id" :content "2097322913669232"}]
-     [:meta {:property "og:type" :content "website"}]
-     [:meta {:property "article:author" :content (:author meta)}]
+     [:meta {:property "og:type"
+             :content
+             (if (blog? entry)
+               "blog"
+               "website")}]
+     (when (blog? entry)
+       [:meta {:property "article:author" :content (:author meta)}])
+     (when (:created entry)
+       [:meta {:property "article:published_time"
+               :content (:created entry)}])
      (when (:banner entry)
        [:meta {:property "og:image" :content (:banner entry)}])
      [:link {:href (get-alt-link meta entry)

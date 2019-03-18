@@ -7,22 +7,20 @@
                   :exclusions [org.clojure/clojure]]
                  [deraen/boot-sass "0.3.1" :scope "test"]
                  [deraen/boot-livereload "0.2.1" :scope "test"]
-                 [org.slf4j/slf4j-nop "1.7.26" :scope "test"]])
+                 [org.slf4j/slf4j-nop "1.7.26" :scope "test"]
+                 [org.clojure/clojure "1.10.0"]])
 
 (require '[io.perun :as perun]
          '[pandeiro.boot-http :refer [serve]]
          '[deraen.boot-sass :refer [sass]]
          '[deraen.boot-livereload :refer [livereload]]
          '[clojure.string :as string]
-         '[site.core :refer [get-lang]])
+         '[site.core :refer [get-lang blog?]])
 
 (task-options!
  pom {:project 'pablo.berganza.dev :version "0.1.3"})
 
 (defn spy [thing] (prn thing) thing)
-
-(defn blog? [file]
-  (re-find #"/blog/" (:permalink file)))
 
 (defn lang? [lang file]
   (= lang (get-lang file)))
