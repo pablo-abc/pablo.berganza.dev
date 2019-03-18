@@ -563,13 +563,6 @@ nav {
     @media only screen and (min-width: 320px) {
       nav .sm {
         display: flex; } }
-  nav a.nav-item {
-    text-decoration: none;
-    color: #7F4ACD;
-    transition: color 0.1s; }
-    nav a.nav-item:hover {
-      text-decoration: underline;
-      color: #9A6DDC; }
   nav a#logo {
     text-decoration: none;
     transition: color 0.1s;
@@ -624,7 +617,7 @@ nav {
     width: 216px;
     height: 216px;
     border-radius: 50%;
-    border: 4px solid white; }
+    border: 4px solid #fce3ef; }
   .main #profile-box #profile-bubble {
     color: white;
     background-color: #E34495;
@@ -731,15 +724,18 @@ nav {
     color: #E34495;
     margin: 0; }
   .blog-item:hover {
-    background-color: #BC9CEC; }
+    background-color: #BC9CEC;
+    text-decoration: none; }
 
 #blog {
   width: 100%; }
   #blog header {
-    margin: 0 0 64px 0;
+    margin: 0 0 32px 0;
     min-height: 110px; }
   #blog h1 {
     padding: 8px 0 0 0; }
+  #blog h2 {
+    color: #7F4ACD; }
   #blog .introduction {
     margin: 0;
     color: white;
@@ -752,7 +748,8 @@ nav {
     max-width: 720px;
     font-weight: 550;
     line-height: 1.2;
-    color: #444; }
+    color: #444;
+    border-bottom: 2px solid #F499C7; }
   #blog .content, #blog .ttr-created {
     margin: 0 10px; }
     @media only screen and (min-width: 740px) {
@@ -771,6 +768,32 @@ nav {
       margin: 0; }
   #blog pre {
     margin: 8px 40px; }
+  #blog ul.share-buttons {
+    max-width: 720px;
+    margin: 0 auto;
+    color: #444;
+    font-weight: 550;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+  #blog ul.share-buttons li {
+    margin: 10px; }
+  #blog ul.share-buttons .sr-only {
+    position: absolute;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden; }
+  #blog .banner {
+    display: block;
+    margin: 0 auto 24px auto;
+    max-width: 720px;
+    border-radius: 10px; }
 
 .contact i {
   color: #7F4ACD; }
@@ -845,7 +868,7 @@ a#logo {
   font-weight: bold;
   font-size: 1.5em; }
 
-p {
+p, ul {
   font-size: 0.875em; }
 
 .hidden {
@@ -861,3 +884,11 @@ header.title {
     padding: 8px 0 8px 0;
     margin: 0;
     line-height: 1.5; }
+
+a {
+  text-decoration: none;
+  color: #7F4ACD;
+  transition: color 0.1s; }
+  a:hover {
+    text-decoration: underline;
+    color: #9A6DDC; }
