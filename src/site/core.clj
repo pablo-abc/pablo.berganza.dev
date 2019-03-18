@@ -124,7 +124,7 @@
      [:meta {:property "og:type"
              :content
              (if (blog? entry)
-               "blog"
+               "article"
                "website")}]
      (when (blog? entry)
        [:meta {:property "article:author" :content (:author meta)}])
