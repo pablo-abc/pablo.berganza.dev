@@ -3,6 +3,10 @@ title: Inicio de un nuevo viaje digital
 introduction: Creando un blog y sitio personal desde zero (más o menos)
 draft: true
 created: '2019-03-17'
+banner: https://scontent.fsal2-1.fna.fbcdn.net/v/t1.0-9/26165170_10215612867861707_5757573544907691457_n.jpg?_nc_cat=100&_nc_ht=scontent.fsal2-1.fna&oh=62808d7a548110365d49c01262249f64&oe=5D22B34F
+bannertitle: Bruselas, Bélgica
+tags:
+    - clojure
 ---
 
 Para bien o para mal, la mayor parte de mi vida digital ha seguido una mentalidad de "hazlo tu mismo". Una ventaja de esto es que he logrado aprender el funcionamiento de varias tecnologías desde un nivel más profundo. Por otro lado, nunca logré terminal ninguno de mis proyectos personales debido a esto (después de todo, en la mayor parte de casos estaba intentando reinventar la rueda).
@@ -46,7 +50,7 @@ Ya tenía un listado de simples características que mi sitio debería tener:
 - Un blog: Para compartir mis pensamientos y experimentos personales.
 - Una página de contacto: ;) ;)
 
-El plan era hacer un servidor con Clojure que se encargaría de manejar todas las publicaciones del blog y otra información relevante. Esta información sería guardad en una base de datos de PostgreSQL. El servidor estaría conectado a una aplicación web desarrollada con ClojureScript. Ya sabía que esta arquitectura era exagerada para un simple sitio web, pero sentía que era la perfecta forma de aprender todo lo que pudiera de Clojure, ClojureScript, y sus escosistemas. Por la emoción, ignoré por completo todas las dificultades que vendrían en el futuro a la hora de mantener el sitio web. Después de considerarlo seriamente (y al darme cuenta de la pesadilla a la que me estaría metiendo) decidí empezar a buscar alternativas. Aún así, logré hacerlo funcionar (más o menos) sin un CMS. El cadáver del sitio original todavía puede ser encontrado en mi [GitHub](https://github.com/pablo-abc/old-personal-site) si alguien está interesado. Precaución: no es bonito.
+El plan era hacer un servidor con Clojure que se encargaría de manejar todas las publicaciones del blog y otra información relevante. Esta información sería guardada en una base de datos de PostgreSQL. El servidor estaría conectado a una aplicación web desarrollada con ClojureScript. Ya sabía que esta arquitectura era exagerada para un simple sitio web, pero sentía que era la perfecta forma de aprender todo lo que pudiera de Clojure, ClojureScript, y sus escosistemas. Por la emoción, ignoré por completo todas las dificultades que vendrían en el futuro a la hora de mantener el sitio web. Después de considerarlo seriamente (y al darme cuenta de la pesadilla a la que me estaría metiendo) decidí empezar a buscar alternativas. Aún así, logré hacerlo funcionar (más o menos) sin un CMS. El cadáver del sitio original todavía puede ser encontrado en mi [GitHub](https://github.com/pablo-abc/old-personal-site) si alguien está interesado. Precaución: no es bonito.
 
 ## Generadores de sitios estáticos
 

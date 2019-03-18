@@ -102,11 +102,15 @@
              :content description}]
      [:meta {:itemprop "name" :content full-title}]
      [:meta {:itemprop "description" :content description}]
+     (when (:banner entry)
+       [:meta {:itemprop "image" :content (:banner entry)}])
      [:meta {:name "twitter:card" :content "summary"}]
      [:meta {:name "twitter:title" :content full-title}]
      [:meta {:name "twitter:description" :content description}]
      [:meta {:name "twitter:site" :content "Pablo_ABC"}]
      [:meta {:name "twitter:creator" :content "Pablo_ABC"}]
+     (when (:banner entry)
+       [:meta {:name "twitter:image:src" :content (:banner entry)}])
      [:meta {:name "og:title" :content full-title}]
      [:meta {:name "og:url" :content url}]
      [:meta {:name "og:site_name" :content (:site-title meta)}]
@@ -114,6 +118,8 @@
      [:meta {:name "fb:admins" :content "1441268341"}]
      [:meta {:name "fb:app_id" :content "2097322913669232"}]
      [:meta {:name "og:type" :content "website"}]
+     (when (:banner entry)
+       [:meta {:name "og:image" :content (:banner entry)}])
      [:link {:href (get-alt-link meta entry)
              :rel "alternate"
              :hreflang (if (= lang :en) "es" "en")}]
@@ -256,6 +262,10 @@
     [:header.title
      [:h1 (:title entry)]
      [:p.introduction (:introduction entry)]]
+    (when (:banner entry)
+      [:img.banner {:src (:banner entry)
+                    :alt (:bannertitle entry)
+                    :title (:bannertitle entry)}])
     [:div.ttr-created
      [:span.ttr [:i.far.fa-clock] " " (:ttr entry) " min"]
      [:span.created [:i.far.fa-calendar-alt] " " (:created entry)]]
