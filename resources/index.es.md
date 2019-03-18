@@ -1,7 +1,7 @@
 ---
 blog: Blog
 contactme: Contáctame
-welcome: Hola, puedo construir cosas! Bienvenido!
+welcome: Hola, soy un desarrollador web! Bienvenido!
 aboutme: Acerca de mi
 myabilities: Mis habilidades
 type: home
