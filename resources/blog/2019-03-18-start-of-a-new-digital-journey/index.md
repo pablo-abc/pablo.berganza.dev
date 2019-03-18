@@ -1,7 +1,7 @@
 ---
 title: Start of a New Digital Journey
 introduction: How I made my life difficult by trying to create my web site from scratch
-created: '2019-03-17'
+created: '2019-03-18'
 draft: true
 banner: https://scontent.fsal2-1.fna.fbcdn.net/v/t1.0-9/26165170_10215612867861707_5757573544907691457_n.jpg?_nc_cat=100&_nc_ht=scontent.fsal2-1.fna&oh=62808d7a548110365d49c01262249f64&oe=5D22B34F
 bannertitle: Brussels, Belgium
