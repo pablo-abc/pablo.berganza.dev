@@ -14,7 +14,7 @@
 
 (defn get-lang [entry]
   (condp re-find (:permalink entry)
-    #"^/es/" :es
+    #"/es/" :es
     :en))
 
 (defn get-alt-link [meta entry]
@@ -189,7 +189,7 @@
         encoded (url-encode url)
         full-title (str (:title entry) " | " (:site-title meta))]
     [:ul {:class "share-buttons"}
-     [:li "Share this:"]
+     [:li (if (= lang :es) "Compártelo:" "Share this:")]
      [:li
       [:a {:href (str "https://www.facebook.com/sharer/sharer.php?u="
                       encoded
@@ -261,8 +261,8 @@
      [:span.created [:i.far.fa-calendar-alt] " " (:created entry)]]
     (let [content (:content entry)]
       [:section.content content])
-    [:section.content
-     (share-buttons meta entry)]]))
+    [:section
+     (share-buttons (add-language meta entry) entry)]]))
 
 (defn contact [{:keys [meta entry]}]
   (render

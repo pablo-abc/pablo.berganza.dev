@@ -87,6 +87,7 @@
         font-weight: 550;
         line-height: 1.2;
         color: #444;
+        border-bottom: 2px solid $color-primary-1;
     }
 
     .content, .ttr-created {
@@ -119,10 +120,15 @@
     }
 
     ul.share-buttons {
+        max-width: 720px;
+        margin: 0 auto;
+        color: #444;
+        font-weight: 550;
         list-style: none;
         padding: 0;
         display: flex;
         justify-content: flex-end;
+        align-items: center;
     }
 
     ul.share-buttons li {
