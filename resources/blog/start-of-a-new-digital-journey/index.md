@@ -1,6 +1,6 @@
 ---
 title: Start of a New Digital Journey
-introduction: Making a personal web site and blog from scratch (sort of).
+introduction: Making a personal web site and blog from scratch (sort of)
 created: '2019-03-17'
 draft: true
 tags:
@@ -51,13 +51,13 @@ I had a really simple set of features that my web site should have:
 
 The plan was to make a back-end Clojure server which would contain all my blog posts and relevant info on a PostgreSQL database, connected to a frond-end ClojureScript application. I knew it was a complete overkill just to make a simple web site, but it was the perfect time for me to learn all that I could about Clojure, ClojureScript and their ecosystems. From all the excitement I completely ignored the difficulties that would come in the future regarding maintenance of the web site. After serious consideration (and realizing the nightmare I would get myself into) I decided to start looking for alternatives, even though I managed to make the original site to sort of work without a CMS. The corpse of this original site can still be found on my [GitHub](https://github.com/pablo-abc/old-personal-site) if anyone is interested. Warning: It's not pretty.
 
-As you can probably see, I ended up falling again on my DIY mentality which ended up making me shelf this project.
+While this time it wasn't due to a DIY mentality, from the beginning I had chosen the wrong set of tools for my specific problems. And this ended up making everything more difficult than it should have been.
 
 ## Static Site Generators
 
-Without looking to much I found the concept of "static site generators". These are tools that take content from different sources (markdown files, in the case of this page) and generates the corresponding HTML files. These files can then be hosted on services such as [GitHub Pages](https://pages.github.com) or [Netlify](https://www.netlify.com).
+Without looking to much I found the concept of "static site generators". These are tools that take content from different sources (markdown files, in the case of this page) and generates the corresponding HTML files. These files can then be hosted on services such as [GitHub Pages](https://pages.github.com) or [Netlify](https://www.netlify.com). If you are already familiar with Git, managing the sites content implies just managing the files on a repository.
 
-The first generators I found where:
+The most popular static site generators I found were:
 
 - [Jekyll](https://jekyllrb.com): Ruby based static site generator.
 - [GatsbyJS](https://www.gatsbyjs.org): As its name implies, a JavaScript (React) based generator. Probably the most impressive one for its set of features.
