@@ -1,6 +1,6 @@
 ---
 title: Inicio de un nuevo viaje digital
-introduction: Creando un blog y sitio personal desde zero (más o menos)
+introduction: Cómo me complique la vida al intentar crear mi sitio web desde cero
 draft: true
 created: '2019-03-17'
 banner: https://scontent.fsal2-1.fna.fbcdn.net/v/t1.0-9/26165170_10215612867861707_5757573544907691457_n.jpg?_nc_cat=100&_nc_ht=scontent.fsal2-1.fna&oh=62808d7a548110365d49c01262249f64&oe=5D22B34F
