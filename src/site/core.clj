@@ -152,7 +152,7 @@
             [:body
              [:header#nav-menu
               (navbar meta entry)]
-             (into [:section#page] content)]))
+             (into [:main#page] content)]))
 
 (defn- home-img-attr [attr]
   (-> {}
@@ -161,7 +161,7 @@
 
 (defn home [{:keys [meta entry]}]
   (render "Home" (add-language meta entry) entry
-          [:main.main
+          [:section.main
            [:section.main-info
             [:div#profile-box
              [:img#profile-pic {:src (str "https://scontent.fsal2-1.fna.fbcdn.net/"
@@ -189,7 +189,7 @@
 
 (defn blogs [{:keys [entries meta entry]}]
   (render "Blog" (add-language meta entry) entry
-          [:main.blog-posts
+          [:section.blog-posts
            [:header.title
             [:h1 "Blog"]]
            [:section#blog-list
@@ -272,27 +272,26 @@
 (defn blog [{:keys [entry meta]}]
   (render
    (:title entry) (add-language meta entry) entry
-   [:main
-    [:article#blog
-     [:header.title
-      [:h1 (:title entry)]
-      [:p.introduction (:introduction entry)]]
-     (when (:banner entry)
-       [:img.banner {:src (:banner entry)
-                     :alt (:bannertitle entry)
-                     :title (:bannertitle entry)}])
-     [:div.ttr-created
-      [:span.ttr [:i.far.fa-clock] " " (:ttr entry) " min"]
-      [:span.created [:i.far.fa-calendar-alt] " " (:created entry)]]
-     (let [content (:content entry)]
-       [:section.content content])
-     [:section
-      (share-buttons (add-language meta entry) entry)]]]))
+   [:article#blog
+    [:header.title
+     [:h1 (:title entry)]
+     [:p.introduction (:introduction entry)]]
+    (when (:banner entry)
+      [:img.banner {:src (:banner entry)
+                    :alt (:bannertitle entry)
+                    :title (:bannertitle entry)}])
+    [:div.ttr-created
+     [:span.ttr [:i.far.fa-clock] " " (:ttr entry) " min"]
+     [:span.created [:i.far.fa-calendar-alt] " " (:created entry)]]
+    (let [content (:content entry)]
+      [:section.content content])
+    [:section
+     (share-buttons (add-language meta entry) entry)]]))
 
 (defn contact [{:keys [meta entry]}]
   (render
    "Contact Me" (add-language meta entry) entry
-   [:main.contact
+   [:section.contact
     [:header.title
      [:h1 (:contactme entry)]]
     [:section
@@ -326,7 +325,7 @@
 (defn not-found [{:keys [meta entry]}]
   (render
    "Not Found" meta entry
-   [:main.not-found
+   [:section.not-found
     [:header
      [:h1 "404"]]
     [:section.message
