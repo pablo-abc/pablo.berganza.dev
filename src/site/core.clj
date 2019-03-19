@@ -285,7 +285,7 @@
      [:span.created [:i.far.fa-calendar-alt] " " (:created entry)]]
     (let [content (:content entry)]
       [:section.content content])
-    [:section
+    [:footer
      (share-buttons (add-language meta entry) entry)]]))
 
 (defn contact [{:keys [meta entry]}]
