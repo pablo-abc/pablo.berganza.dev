@@ -547,7 +547,7 @@ nav {
       flex: 1;
       display: flex;
       flex-direction: column; }
-      @media only screen and (min-width: 530px) {
+      @media only screen and (min-width: 540px) {
         nav div.left-nav {
           flex-direction: row;
           align-items: center; } }
@@ -558,30 +558,31 @@ nav {
         margin: 5px; }
   nav .sm {
     display: none; }
-    @media only screen and (min-width: 320px) {
+    @media only screen and (min-width: 330px) {
       nav .sm {
         display: flex; } }
   nav a#logo {
     text-decoration: none;
     transition: color 0.1s;
-    margin-right: 10px;
     color: #E34495;
     font-weight: bold;
     font-size: 1.5em;
     display: flex;
     flex-direction: column; }
-    @media only screen and (min-width: 352px) {
+    @media only screen and (min-width: 362px) {
       nav a#logo {
         flex-direction: row; } }
     nav a#logo:hover {
       color: #F499C7; }
+    nav a#logo span {
+      margin-right: 8px; }
 
 #page {
   margin-top: 107px; }
-  @media only screen and (min-width: 352px) {
+  @media only screen and (min-width: 362px) {
     #page {
       margin-top: 77px; } }
-  @media only screen and (min-width: 530px) {
+  @media only screen and (min-width: 540px) {
     #page {
       margin-top: 50px; } }
 
@@ -592,10 +593,10 @@ nav {
   background-color: #fce3ef;
   opacity: 0.9;
   max-height: 107px; }
-  @media only screen and (min-width: 352px) {
+  @media only screen and (min-width: 362px) {
     #nav-menu {
       max-height: 77px; } }
-  @media only screen and (min-width: 530px) {
+  @media only screen and (min-width: 540px) {
     #nav-menu {
       max-height: 50px; } }
 
