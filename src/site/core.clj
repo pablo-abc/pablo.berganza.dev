@@ -96,6 +96,7 @@
                        "Sitio y blog personal de Pablo Berganza."))
         url (str (:base-url meta) (subs (or (:permalink entry) " ") 1))]
     [:head
+     [:meta {:charset "utf-8"}]
      ;; FAVICON
      [:link {:rel "apple-touch-icon", :sizes "57x57", :href "/apple-icon-57x57.png"}]
      [:link {:rel "apple-touch-icon", :sizes "60x60", :href "/apple-icon-60x60.png"}]
@@ -115,9 +116,6 @@
      [:meta {:name "msapplication-TileImage", :content "/ms-icon-144x144.png"}]
      [:meta {:name "theme-color", :content "#E34495"}]
      ;; REST
-     [:meta {:charset "utf-8"}]
-     [:meta {:name "pocket-site-verification"
-             :content "d7bd427abed5c350943503bc567601"}]
      [:meta {:name "viewport"
              :content "width=device-width, initial-scale=1"}]
      [:meta {:name "author"
@@ -226,14 +224,16 @@
 (defn share-buttons [meta entry]
   (let [lang (or (keyword (:lang meta)) :en)
         url (str (:base-url meta) (subs (or (:permalink entry) " ") 1))
-        encoded (url-encode url)]
+        encoded (url-encode url)
+        introduction (url-encode (:introduction entry))
+        title (url-encode (:title entry))]
     [:ul {:class "share-buttons"}
      [:li (if (= lang :es) "Compártelo:" "Share this:")]
      [:li
       [:a {:href (str "https://www.facebook.com/sharer/sharer.php?u="
                       encoded
                       "&quote="
-                      (:introduction entry)),
+                      introduction),
            :target "_blank",
            :title "Share on Facebook"}
        [:i {:class "fab fa-facebook-square fa-2x", :aria-hidden "true"}]
@@ -244,7 +244,7 @@
       [:a {:href (str "https://twitter.com/intent/tweet?source="
                       encoded
                       "&text="
-                      (:introduction entry)
+                      introduction
                       ":%20"
                       encoded
                       "&via=Pablo_ABC"),
@@ -257,7 +257,7 @@
       [:a {:href (str "https://getpocket.com/save?url="
                       encoded
                       "&title="
-                      (:title entry)),
+                      title),
            :target "_blank", :title "Add to Pocket"}
        [:i {:class "fab fab fa-get-pocket fa-2x", :aria-hidden "true"}]
        [:span {:class "sr-only"}
@@ -267,7 +267,7 @@
       [:a {:href (str "http://www.reddit.com/submit?url="
                       encoded
                       "&title="
-                      (:title entry)),
+                      title),
            :target "_blank", :title "Submit to Reddit"}
        [:i {:class "fab fa-reddit-square fa-2x", :aria-hidden "true"}]
        [:span {:class "sr-only"}
@@ -277,9 +277,9 @@
       [:a {:href (str "http://www.linkedin.com/shareArticle?mini=true&url="
                       encoded
                       "&title="
-                      (:title entry)
+                      title
                       "&summary="
-                      (:introduction entry)
+                      introduction
                       "&source="
                       encoded),
            :target "_blank", :title "Share on LinkedIn"}
@@ -294,7 +294,7 @@
    [:article#blog
     [:header.title
      [:h1 (:title entry)]
-     [:p.introduction (:introduction entry)]]
+     [:h4.introduction (:introduction entry)]]
     (when (:banner entry)
       [:img.banner {:src (:banner entry)
                     :alt (:bannertitle entry)
