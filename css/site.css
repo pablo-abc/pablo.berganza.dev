@@ -793,8 +793,7 @@ nav {
     display: block;
     margin: 0 auto 24px auto;
     width: 95%;
-    max-width: 720px;
-    border-radius: 10px; }
+    max-width: 720px; }
 
 .contact i {
   color: #7F4ACD; }
