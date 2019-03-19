@@ -39,7 +39,7 @@ Para tener una probada de él, esta es la (no tan elegante) función que genera 
      (share-buttons meta entry)]]))
 ```
 
-Hay otra variante de Clojure que transpila/compila a JavaScript, llamada [ClojureScript](https://clojurescript.org) que ya tenía planeado utilizar para el front-end de mi futuro proyecto.
+Hay otra variante de Clojure que transpila/compila a JavaScript, llamada [ClojureScript](https://clojurescript.org), que ya tenía planeado utilizar para el front-end de mi futuro proyecto.
 
 Entonces ya tenía el lenguage de programación para mi próximo proyecto y, cómo todavía no tenía un sitio web personal, decidí que eso mismo sea.
 
