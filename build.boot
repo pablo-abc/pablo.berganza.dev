@@ -11,6 +11,7 @@
                  [org.clojure/clojure "1.10.0"]])
 
 (require '[io.perun :as perun]
+         '[io.perun.meta :as pm]
          '[pandeiro.boot-http :refer [serve]]
          '[deraen.boot-sass :refer [sass]]
          '[deraen.boot-livereload :refer [livereload]]
@@ -95,3 +96,31 @@
   (comp (watch)
         (build-dev)
         (serve :resource-root "public")))
+
+(def ^:private +lang-defaults+
+  {:filterer identity
+   :extensions [".html"]
+   :default-lang "en"})
+
+(defn- get-lang-from-ext [{default-lang :default-lang} {slug :slug}]
+  (when slug
+    (let [split-slug (string/split slug #"\.")
+          lang (when (> (count split-slug) 1) (split-slug 1))]
+      (if (nil? lang)
+        default-lang
+        (str "/" lang
+             (string/replace permalink (re-pattern (str "\\." lang)) ""))))))
+
+(deftask lang
+  "Add language based on extension."
+  [_ filterer FILTER code "predicate used to select entries (default: identity)"
+   e extensions EXTENSIONS [str] "extensions of files to include"
+   l default-lang LANG str "default language for file"]
+  (let [options (merge +lang-defaults+ *opts*)]
+    (with-pre-wrap fileset
+      (let [meta-contents (perun/filter-meta-by-ext fileset options)
+            updated-metas (->> meta-contents
+                             (map #(assoc % :lang "es"))
+                             (map #(assoc % :permalink (get-lang-from-ext options %))))]
+        (prn (first updated-metas))
+        fileset))))
