@@ -83,7 +83,8 @@
         (lang)
         (perun/permalink :permalink-fn translate)
         (perun/permalink :permalink-fn rm-dir-date)
-        (perun/permalink :filterer (complement index?))))
+        (perun/permalink :filterer (complement index?))
+        (perun/rss)))
 
 (deftask render
   "Render files"
