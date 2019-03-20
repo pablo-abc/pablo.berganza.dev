@@ -97,19 +97,16 @@
         (build-dev)
         (serve :resource-root "public")))
 
-(def ^:private +lang-defaults+
-  {:filterer identity
-   :extensions [".html"]
-   :default-lang "en"})
-
 (defn- get-lang-from-ext [{default-lang :default-lang} {slug :slug}]
   (when slug
     (let [split-slug (string/split slug #"\.")
           lang (when (> (count split-slug) 1) (split-slug 1))]
-      (if (nil? lang)
-        default-lang
-        (str "/" lang
-             (string/replace permalink (re-pattern (str "\\." lang)) ""))))))
+      (or lang default-lang))))
+
+(def ^:private +lang-defaults+
+  {:filterer identity
+   :extensions [".html"]
+   :default-lang "en"})
 
 (deftask lang
   "Add language based on extension."
@@ -120,7 +117,6 @@
     (with-pre-wrap fileset
       (let [meta-contents (perun/filter-meta-by-ext fileset options)
             updated-metas (->> meta-contents
-                             (map #(assoc % :lang "es"))
-                             (map #(assoc % :permalink (get-lang-from-ext options %))))]
-        (prn (first updated-metas))
-        fileset))))
+                             (map #(assoc % :lang
+                                          (get-lang-from-ext options %))))]
+        (pm/set-meta fileset updated-metas)))))
