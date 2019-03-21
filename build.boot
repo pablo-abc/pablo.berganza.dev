@@ -98,10 +98,12 @@
         (perun/static :renderer 'site.core/not-found :page "404.html")
         (perun/collection :renderer 'site.core/blogs
                           :filterer (every-pred blog? english?)
-                          :page "blog/index.html")
+                          :page "blog/index.html"
+                          :meta {:lang "en"})
         (perun/collection :renderer 'site.core/blogs
                           :filterer (every-pred blog? spanish?)
-                          :page "es/blog/index.html")))
+                          :page "es/blog/index.html"
+                          :meta {:lang "es"})))
 
 (deftask build-dev
   "Builds with livereload"
