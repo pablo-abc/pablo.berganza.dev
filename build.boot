@@ -27,9 +27,9 @@
 (defn lang? [lang file]
   (= lang (get-lang file)))
 
-(def english? (partial lang? :en))
+(def english? (partial lang? "en"))
 
-(def spanish? (partial lang? :es))
+(def spanish? (partial lang? "es"))
 
 (defn translate [{default-lang :default-lang} {:keys [lang permalink]}]
   (if (or (= lang default-lang) (nil? lang))

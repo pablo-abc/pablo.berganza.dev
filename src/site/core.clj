@@ -14,40 +14,30 @@
 
 (defn get-lang [entry]
   (condp re-find (:permalink entry)
-    #"/es/" :es
-    :en))
+    #"/es/" "es"
+    "en"))
 
 (defn get-alt-link [meta entry]
-  (let [lang (:lang meta)]
+  (let [lang (:lang entry)]
     (if (or (= lang "en") (nil? lang))
       (str "/es" (:permalink entry))
       (string/replace (:permalink entry) #"^/es" ""))))
-
-(get-alt-link {:link-prefix ""
-               :lang "en"}
-              {:permalink "/blog"})
-
-(defn- add-language [meta entry]
-  (let [lang (name (get-lang entry))]
-    (-> meta
-       (assoc :lang lang)
-       (assoc :link-prefix (if (= "en" lang)
-                             ""
-                             (str "/" lang))))))
 
 (defn- ability-colors [quantity]
   (flatten
    (map vector
         (repeat quantity "color-1") (repeat quantity "color-2"))))
 
-(def navbar-links {:en {:blog "Blog"
+(def navbar-links {"en" {:blog "Blog"
                         :contact "Contact Me"}
-                   :es {:blog "Blog"
+                   "es" {:blog "Blog"
                         :contact "Contáctame"}})
 
 (defn navbar [meta entry]
-  (let [prefix (or (:link-prefix meta) "")
-        lang (or (keyword (:lang meta)) :en)]
+  (let [lang (or (:lang entry) "en")
+        prefix (if (= "en" lang)
+                 ""
+                 (str "/" lang))]
     [:nav
      [:div.left-nav
       [:div.logo
@@ -56,12 +46,12 @@
         [:span "Berganza"]]]
       [:div.nav-items
        [:a.nav-item {:href (str prefix "/blog")}
-        (:blog (lang navbar-links))] " | "
+        (:blog (get navbar-links lang))] " | "
        [:a.nav-item {:href (str prefix "/contact")}
-        (:contact (lang navbar-links))]]]
+        (:contact (get navbar-links lang))]]]
      [:div.right-nav
       [:a.nav-item {:href (get-alt-link meta entry)}
-       (if (= lang :en) "es" "en")]
+       (if (= lang "en") "es" "en")]
       [:a.nav-item.sm
        {:href "https://github.com/pablo-abc"
         :target "_blank" :rel "noopener noreferrer"
@@ -87,7 +77,7 @@
   (re-find #"/blog/" (or (:permalink file) "")))
 
 (defn head [title meta entry]
-  (let [lang (or (keyword (:lang meta)) :en)
+  (let [lang (or (keyword (:lang entry)) :en)
         full-title (str title " | " (:site-title meta))
         description (or
                      (:introduction entry)
@@ -164,7 +154,7 @@
      (include-css "/css/site.css")]))
 
 (defn render [title meta entry & content]
-  (hp/html5 {:lang (or (:lang meta) "en")}
+  (hp/html5 {:lang (or (:lang entry) "en")}
             (head title meta entry)
             [:body
              [:header#nav-menu
@@ -177,7 +167,7 @@
      (assoc :alt (attr 1))))
 
 (defn home [{:keys [meta entry]}]
-  (render "Home" (add-language meta entry) entry
+  (render "Home" meta entry
           [:section.main
            [:section.main-info
             [:div#profile-box
@@ -205,7 +195,7 @@
   (Integer/valueOf (string/replace (:created entry) #"-" "")))
 
 (defn blogs [{:keys [entries meta entry]}]
-  (render "Blog" (add-language meta entry) entry
+  (render "Blog" meta entry
           [:section.blog-posts
            [:header.title
             [:h1 "Blog"]]
@@ -222,7 +212,7 @@
               [:h2 "It seems there's nothing here... yet."])]]))
 
 (defn share-buttons [meta entry]
-  (let [lang (or (keyword (:lang meta)) :en)
+  (let [lang (or (keyword (:lang entry)) :en)
         url (str (:base-url meta) (subs (or (:permalink entry) " ") 1))
         encoded (url-encode url)
         introduction (url-encode (:introduction entry))
@@ -290,7 +280,7 @@
 
 (defn blog [{:keys [entry meta]}]
   (render
-   (:title entry) (add-language meta entry) entry
+   (:title entry) meta entry
    [:article#blog
     [:header.title
      [:h1 (:title entry)]
@@ -305,11 +295,11 @@
     (let [content (:content entry)]
       [:section.content content])
     [:footer
-     (share-buttons (add-language meta entry) entry)]]))
+     (share-buttons meta entry)]]))
 
 (defn contact [{:keys [meta entry]}]
   (render
-   "Contact Me" (add-language meta entry) entry
+   "Contact Me" meta entry
    [:section.contact
     [:header.title
      [:h1 (:contactme entry)]]
