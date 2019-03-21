@@ -691,13 +691,13 @@ nav {
   color: #E34495;
   text-align: center; }
 
-#blog-list {
+.blog-list {
   display: flex;
   flex-direction: column;
   max-width: 720px;
   margin: 0 10px; }
   @media only screen and (min-width: 740px) {
-    #blog-list {
+    .blog-list {
       margin: 0 auto; } }
 
 .blog-item {
@@ -743,6 +743,13 @@ nav {
     display: flex;
     max-width: 720px;
     justify-content: space-between; }
+  #blog .tag-links {
+    display: flex;
+    max-width: 720px;
+    margin: 0 auto;
+    margin-top: 16px; }
+    #blog .tag-links .tag-link {
+      margin-left: 8px; }
   #blog .content {
     max-width: 720px;
     font-weight: 550;
