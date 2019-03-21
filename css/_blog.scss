@@ -85,8 +85,6 @@
     .tag-links {
         display: flex;
         max-width: 720px;
-        margin: 0 auto;
-        margin-top: 16px;
         .tag-link {
             margin-left: 8px;
         }
@@ -100,10 +98,10 @@
         border-bottom: 2px solid $color-primary-1;
     }
 
-    .content, .ttr-created {
-        margin: 0 10px;
+    .content, .ttr-created, .tag-links {
+        margin: 8px 10px;
         @media only screen and (min-width: 740px) {
-            margin: 0 auto;
+            margin: 8px auto;
         }
     }
 
