@@ -83,7 +83,6 @@
         (lang)
         (perun/permalink :permalink-fn translate)
         (perun/permalink :permalink-fn rm-dir-date)
-        (perun/permalink :filterer (complement index?))
         (perun/rss)))
 
 (deftask render
@@ -103,7 +102,16 @@
         (perun/collection :renderer 'site.core/blogs
                           :filterer (every-pred blog? spanish?)
                           :page "es/blog/index.html"
-                          :meta {:lang "es"})))
+                          :meta {:lang "es"})
+        (perun/tags :renderer 'site.core/tags
+                    :filterer (every-pred blog? english?)
+                    :out-dir "public/blog"
+                    :meta {:lang "en"})
+        (perun/tags :renderer 'site.core/tags
+                    :filterer (every-pred blog? spanish?)
+                    :out-dir "public/es/blog"
+                    :meta {:lang "es"})
+        (perun/permalink :filterer (complement index?))))
 
 (deftask build-dev
   "Builds with livereload"

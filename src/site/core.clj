@@ -199,7 +199,7 @@
           [:section.blog-posts
            [:header.title
             [:h1 "Blog"]]
-           [:section#blog-list
+           [:section.blog-list
             (if (pos? (count entries))
               (for [blog (sort-by date->num > entries)]
                 [:a.blog-item {:href (:permalink blog)}
@@ -210,6 +210,24 @@
                    [:span.created [:i.far.fa-calendar-alt] " " (:created blog)]]
                   [:p.introduction (:introduction blog)]]])
               [:h2 "It seems there's nothing here... yet."])]]))
+
+(defn tags [{:keys [entries meta entry]}]
+  (let [permalink (str "/blog"
+                       (first (string/split (:permalink entry) #"\.")))
+        new-entry (assoc entry :permalink permalink)]
+    (render (string/capitalize (:tag entry)) meta new-entry
+            [:section.blog-posts
+             [:header.title
+              [:h1 (string/capitalize (:tag entry))]]
+             [:section.blog-list
+              (for [blog (sort-by date->num > entries)]
+                [:a.blog-item {:href (:permalink blog)}
+                 [:article
+                  [:h3 (:title blog)]
+                  [:p.ttr-created
+                   [:span.ttr [:i.far.fa-clock] " " (:ttr blog) " min"]
+                   [:span.created [:i.far.fa-calendar-alt] " " (:created blog)]]
+                  [:p.introduction (:introduction blog)]]])]])))
 
 (defn share-buttons [meta entry]
   (let [lang (or (keyword (:lang entry)) :en)
@@ -279,23 +297,31 @@
        ]]]))
 
 (defn blog [{:keys [entry meta]}]
-  (render
-   (:title entry) meta entry
-   [:article#blog
-    [:header.title
-     [:h1 (:title entry)]
-     [:h4.introduction (:introduction entry)]]
-    (when (:banner entry)
-      [:img.banner {:src (:banner entry)
-                    :alt (:bannertitle entry)
-                    :title (:bannertitle entry)}])
-    [:div.ttr-created
-     [:span.ttr [:i.far.fa-clock] " " (:ttr entry) " min"]
-     [:span.created [:i.far.fa-calendar-alt] " " (:created entry)]]
-    (let [content (:content entry)]
-      [:section.content content])
-    [:footer
-     (share-buttons meta entry)]]))
+  (let [lang (or (:lang entry) "en")
+        prefix (if (= "en" lang)
+                 "/"
+                 (str "/" lang "/"))]
+    (render
+     (:title entry) meta entry
+     [:article#blog
+      [:header.title
+       [:h1 (:title entry)]
+       [:h4.introduction (:introduction entry)]]
+      (when (:banner entry)
+        [:img.banner {:src (:banner entry)
+                      :alt (:bannertitle entry)
+                      :title (:bannertitle entry)}])
+      [:div.ttr-created
+       [:span.ttr [:i.far.fa-clock] " " (:ttr entry) " min"]
+       [:span.created [:i.far.fa-calendar-alt] " " (:created entry)]]
+      [:div.tag-links
+       (if (= lang "en") "Tags:" "Etiquetas:")
+       (for [tag (:tags entry)]
+         [:a.tag-link {:href (str prefix "blog/" tag)} tag])]
+      (let [content (:content entry)]
+        [:section.content content])
+      [:footer
+       (share-buttons meta entry)]])))
 
 (defn contact [{:keys [meta entry]}]
   (render
