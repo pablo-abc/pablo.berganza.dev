@@ -2,3 +2,5 @@
 .nrepl-history
 target/
 node_modules/
+.shadow-cljs/
+resources/public/js/

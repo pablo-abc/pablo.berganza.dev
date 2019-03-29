@@ -1,5 +1,5 @@
 (set-env!
- :source-paths #{"src"}
+ :source-paths #{"src/clj"}
  :resource-paths #{"resources"}
  :dependencies '[[perun "0.4.3-SNAPSHOT" :scope "test"]
                  [hiccup "1.0.5" :exclusions [org.clojure/clojure]]
