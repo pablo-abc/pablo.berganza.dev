@@ -20,7 +20,7 @@
          '[site.core :refer [get-lang blog?]])
 
 (task-options!
- pom {:project 'pablo.berganza.dev :version "0.1.3"})
+ pom {:project 'pablo.berganza.dev :version "0.1.5"})
 
 (defn spy [thing] (prn thing) thing)
 
