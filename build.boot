@@ -50,6 +50,8 @@
     (let [split-slug (string/split slug #"\.")]
       (when (> (count split-slug) 1) (split-slug 1)))))
 
+(defn not-found? [file] (= "404" (spy (:slug file))))
+
 (def ^:private +lang-defaults+
   {:filterer identity
    :extensions [".html"]
@@ -94,7 +96,6 @@
                       :filterer (partial is-type "home"))
         (perun/render :renderer 'site.core/contact
                       :filterer (partial is-type "contact"))
-        (perun/static :renderer 'site.core/not-found :page "404.html")
         (perun/collection :renderer 'site.core/blogs
                           :filterer (every-pred blog? english?)
                           :page "blog/index.html"
@@ -112,6 +113,7 @@
                     :out-dir "public/es/blog"
                     :meta {:lang "es"})
         (perun/permalink :filterer (complement index?))
+        (perun/static :renderer 'site.core/not-found :page "404.html")
         (perun/inject-scripts :scripts #{"public/js/main.js"})))
 
 (deftask build-dev
