@@ -111,7 +111,8 @@
                     :filterer (every-pred blog? spanish?)
                     :out-dir "public/es/blog"
                     :meta {:lang "es"})
-        (perun/permalink :filterer (complement index?))))
+        (perun/permalink :filterer (complement index?))
+        (perun/inject-scripts :scripts #{"public/js/main.js"})))
 
 (deftask build-dev
   "Builds with livereload"

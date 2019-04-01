@@ -156,10 +156,10 @@
 (defn render [title meta entry & content]
   (hp/html5 {:lang (or (:lang entry) "en")}
             (head title meta entry)
-            [:body
+            [:body {:data-barba "wrapper"}
              [:header#nav-menu
               (navbar meta entry)]
-             (into [:main#page] content)]))
+             (into [:main#page {:data-barba "container"}] content)]))
 
 (defn- home-img-attr [attr]
   (-> {}
