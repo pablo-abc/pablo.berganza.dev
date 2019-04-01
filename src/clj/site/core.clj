@@ -45,12 +45,13 @@
         [:span "Pablo"]
         [:span "Berganza"]]]
       [:div.nav-items
-       [:a.nav-item {:href (str prefix "/blog")}
+       [:a#blog-nav.nav-item {:href (str prefix "/blog")}
         (:blog (get navbar-links lang))] " | "
-       [:a.nav-item {:href (str prefix "/contact")}
+       [:a#contact-nav.nav-item {:href (str prefix "/contact")}
         (:contact (get navbar-links lang))]]]
      [:div.right-nav
-      [:a.nav-item {:href (get-alt-link meta entry)}
+      [:a#lang-nav.nav-item {:href (get-alt-link meta entry)
+                             :data-barba-prevent "self"}
        (if (= lang "en") "es" "en")]
       [:a.nav-item.sm
        {:href "https://github.com/pablo-abc"
