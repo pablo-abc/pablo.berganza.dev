@@ -45,9 +45,9 @@
         [:span "Pablo"]
         [:span "Berganza"]]]
       [:div.nav-items
-       [:a#blog-nav.nav-item {:href (str prefix "/blog")}
+       [:a#blog-nav.nav-item {:href (str prefix "/blog/")}
         (:blog (get navbar-links lang))] " | "
-       [:a#contact-nav.nav-item {:href (str prefix "/contact")}
+       [:a#contact-nav.nav-item {:href (str prefix "/contact/")}
         (:contact (get navbar-links lang))]]]
      [:div.right-nav
       [:a#lang-nav.nav-item {:href (get-alt-link meta entry)
@@ -318,7 +318,7 @@
       [:div.tag-links
        (if (= lang "en") "Tags:" "Etiquetas:")
        (for [tag (:tags entry)]
-         [:a.tag-link {:href (str prefix "blog/" tag)} tag])]
+         [:a.tag-link {:href (str prefix "blog/" tag "/")} tag])]
       (let [content (:content entry)]
         [:section.content content])
       [:footer
