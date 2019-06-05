@@ -50,8 +50,6 @@
     (let [split-slug (string/split slug #"\.")]
       (when (> (count split-slug) 1) (split-slug 1)))))
 
-(defn not-found? [file] (= "404" (spy (:slug file))))
-
 (def ^:private +lang-defaults+
   {:filterer identity
    :extensions [".html"]
