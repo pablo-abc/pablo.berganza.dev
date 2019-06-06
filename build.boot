@@ -78,7 +78,8 @@
   []
   (comp (sass)
         (perun/global-metadata)
-        (perun/markdown :md-exts {:smartypants true})
+        (perun/markdown :md-exts {:smartypants true
+                                  :tables true})
         (perun/ttr :filterer blog?)
         (lang)
         (perun/permalink :permalink-fn translate)
