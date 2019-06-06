@@ -66,7 +66,7 @@
       [:a.nav-item.sm
        {:href "https://www.linkedin.com/in/PabloABC"
         :target "_blank" :rel "noopener noreferrer"
-        :title "Facebook"}
+        :title "LinkedIn"}
        [:i.fab.fa-linkedin]]
       [:a.nav-item.sm
        {:href "https://twitter.com/Pablo_ABC"
