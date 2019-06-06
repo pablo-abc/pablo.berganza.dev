@@ -13,11 +13,11 @@ tags:
     - api
 ---
 
-This past year working as a web developer I’ve been basically breathing [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) everyday. While it is not that much time, it has been more than enough to appreciate the simplicity over SOAP, and to loathe the moments in which client requirements force you to write endpoints that are not [RESTful](https://restfulapi.net/rest-architectural-constraints/). While REST is a standard already for making web APIs, for quite a while there has been a new kid on the block that I hadn’t pushed myself to learn about: [GraphQL](https://graphql.org). But that has changed now and I have been experimenting quite a bit using it on the client and on the server.
+This past year working as a web developer I’ve been basically breathing [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) everyday. While it is not that much time, it has been more than enough to appreciate the simplicity over SOAP, and to loathe the moments in which client requirements or other situations force you to write endpoints that are not [RESTful](https://restfulapi.net/rest-architectural-constraints/). While REST is a standard already for making modern web APIs, for quite a while there has been a new kid on the block that I hadn’t pushed myself to learn about: [GraphQL](https://graphql.org). But that has changed now and I have been experimenting quite a bit using it on the client and on the server.
 
 According to [graphql.org](https://graphql.org), “GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data”. A server implementing the GraphQL specification should be able to receive a query sent by the client, containing a description of the specific data the client needs, and it should be able to provide this data as the client asked.
 
-But first, let's start by checking what's so great about REST.
+But before talking more about GraphQL, let's start by checking what's so great about REST.
 
 ## REST
 
@@ -46,11 +46,11 @@ Depending on which method is used to call the endpoint, a different operation wi
 | PATCH  | /resources/{id} | Update specific fields of an element | 200, 400        |
 | DELETE | /resources/{id} | Delete an element                    | 204, 200, 404   |
 
-As you can see, this gives us a clean and predictable interface on which we can operate on the resources on the server.
+This gives us a clean and predictable interface on which we can operate on the resources on the server.
 
 As you saw in the endpoints examples above, REST endpoints can follow a hierarchical structure. Say, if you perform a POST operation on the endpoint `/accounts/8326/posts`, it should mean you are creating a post that belongs to the account with the id 8326.
 
-I've talked about how a REST API looks like to the client, but that's not enough for an API to be considered a REST API. In order to be classified as such, it should follow six constraints:
+I've talked about how a REST API looks like to the client, but the characteristics described before are not enough for an API to be considered a REST API. In order to be classified as such, it should follow six constraints:
 
   * **Uniform interface**: A REST API must have a well defined and consistent interface. This interface must be followed almost religiously in all resources exposed by the API. It must have consistent naming conventions, data format, etc.
   * **Client-server**: There must be a clear separation between client and server.
@@ -68,14 +68,14 @@ This constraints all bring some benefits to the table:
   * Cacheable endpoints help reduce the load on the server.
   * A layered system allows the client to pass by many intermediaries (e.g. authorization) while still interacting the same way with the server.
 
-Although the most common data format a REST API works with is JSON, if needed, a REST API may work with different ones (e.g. XML). Also, although most REST APIs available publicly are served over HTTP, but REST can theoretically be served over a different protocol.
+Although the most common data format a REST API works with is JSON, if needed, a REST API may work with different ones (e.g. XML). Also, although most REST APIs available publicly are served over HTTP, a REST API can theoretically be served over a different protocol.
 
-As you can see, a properly developed REST API comes with many benefits when it comes to client and server development, but there's also some caveats on all this:
+As you can see, a properly developed REST API comes with many benefits, but there's also some caveats on all this:
 
   * Since there's no clear standard (besides the six constraints) on how a REST API should behave, there's a lot of design choices that are up to the developer. This means that you won't necessarilly be able to interact with two REST APIs the same way.
-  * Unless proper filters are implemented, a REST endpoint may return a lot more information than the client needs.
-  * Since REST endpoints are clearly divided by resources, in order to populate the information needed in a client view the client might need to do many requests to the serve.
-  * Consistency is hard. The developing team must actively try to maintain consistency which means more effort when developing.
+  * Unless proper filters are implemented on the server, a REST endpoint may return a lot more information than the client needs.
+  * Since REST endpoints are clearly divided by resources, in order to populate the information needed in a client view the client might need to do many requests to the server.
+  * Consistency is hard. The developing team must actively try to maintain consistency which means more effort when developing. It's easy to add inconsistencies to the server.
   * Deadlines, client requirements, etc. might push you to break some of the REST constraints which might end up on a mix of various architectures (e.g. RPC).
 
 This shows that building a proper REST API is not an easy task. There are some pitfalls on which the developing team might fall making the final result not being a REST API, losing some of the benefits provided by the REST constraints.
@@ -86,7 +86,7 @@ So what does GraphQL bring to the table?
 
 As said before, GraphQL is described as a query language for APIs. Unlike REST, GraphQL defines a single endpoint that accepts all operations to the server by sending a parameter called "query" alongside the request. Requests are generally done via a POST request to the GraphQL endpoint, but the specification allows for GET requests as long as it is read only.
 
-There are two types of requests you can make to a GraphQL server: queries or mutations. A query request may look like this:
+There are two types of requests you can make to a GraphQL API: queries or mutations. A query request may look like this:
 
 ```javascript
 {
@@ -125,20 +125,20 @@ GraphQL shouldn't be considered an architectural style. It is more like a collec
   * The server should be stateless.
   * Even though most GraphQL APIs are served over HTTP, it could be served over a different protocol.
 
-Apart from that, a GraphQL server has other advantages over a REST API:
+Apart from that, a GraphQL API has other advantages over a REST API:
 
   * A highly consistent interface to the client since the client-server communication is done using an already well defined query language.
   * It's self documenting. When schemas are defined, they can also be available for the client to see. It is also possible to include docstrings to the schemas in order to explain them more thoroughly.
-  * The tooling available provides an enjoyable developer experience. Tools like Graphiql and GraphQL playground can make exploring the schemas on a GraphQL query really easy, and some client-side libraries such as Apollo can provide a lot of other tools to add functionality to the client.
+  * The tooling available provides an enjoyable developer experience. Tools like Graphiql and GraphQL playground can make exploring the schemas on a GraphQL API really easy, and some client-side libraries such as Apollo can provide a lot of other tools to add functionality to the client.
   * Since the moment the schemas are defined, there's a contract between client and server. Schemas must include the properties and data types expected on input and response. Properties may also be added later to the schema, and it is usually not recommended to remove properties.
   * The entry barrier for designing a GraphQL API compared to a proper REST API is much lower.
   * There are many server-side implementations for most of the major programming languages that follow the exact GraphQL specification, so the interaction with different GraphQL APIs should remain consistent.
   * Reduces considerably the requests to the server, since all information can be potentially requested with a single request.
 
-But, of course, it is not only advantages. We're losing some of the advantages provided by REST architecture when implementing a GraphQL API, and there's also some caveats to it:
+But, of course, there are not only advantages in the GraphQL world. We're losing some of the advantages provided by REST architecture when implementing a GraphQL API, and there's also some other caveats to it:
 
   * Even though it is generally served over HTTP, it loses many of the benefits provided by it such as caching, rate limiting, etc. This reduces its potential scalability.
-  * A GraphQL query is potentially less efficient than a REST API. Due to the unpredictable complexity of the requests made to the server, a single request to the server can turn into N+1 operations.
+  * A GraphQL API is potentially less efficient than a REST API. Due to the unpredictable complexity of the requests made to the server, a single request to the server can turn into N+1 operations.
   * Being published on 2015 (and starting to being developed in 2012) it could be argued that the ecosystem is still not mature and there's a possibility for considerable changes.
   * For simple applications, requests can be made using the fetch API or libraries like Axios. But, if the application grows, a GraphQL library (such as Apollo Client) might be needed, which would increase the resulting bundle size.
   * It can considerably increase the server's code complexity when optimizations are needed.
