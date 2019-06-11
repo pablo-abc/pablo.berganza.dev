@@ -4,7 +4,6 @@ introduction: A nice alternative to REST APIs with a fantastic developer experie
 created: '2019-06-11'
 banner: https://scontent.fsal3-1.fna.fbcdn.net/v/t1.0-9/17103606_10212690429522575_6588581555881398083_n.jpg?_nc_cat=102&_nc_ht=scontent.fsal3-1.fna&oh=0d841081496a1863cc9986663c7f4798&oe=5D967AFD
 bannertitle: Peloponnese, Greece
-draft: true
 tags:
     - javascript
     - graphql
@@ -101,7 +100,7 @@ There are two types of requests you can make to a GraphQL API: queries or mutati
 }
 ```
 
-This means there should be a query with the name "post" defined in the server. This query is asking for the id, title, content, author's id and author's email of the post with id "1". If found, the response will follow the same structure described in the query. A GraphQL query would be analogous to performing a GET request on a REST API endpoint.
+This means there should be a schema of the type "query" with the name "post" defined in the server. This query is asking for the id, title, content, author's id and author's email of the post with id "1". If found, the response will follow the same structure described in the query. A GraphQL query would be analogous to performing a GET request on a REST API endpoint.
 
 A GraphQL mutation may look like this:
 
@@ -117,7 +116,7 @@ mutation {
 }
 ```
 
-This assumes that there is a mutation called "createAccount" defined in the server. This mutation is asking the server to create an account with the specified email and password, and following its creation to return its id and email.
+This assumes that there is a schema of the type "mutation" named "createAccount" defined in the server. This mutation is asking the server to create an account with the specified email and password, and following its creation to return its id and email.
 
 GraphQL shouldn't be considered an architectural style. It is more like a collection of tools that facilitate the development of an RPC style API (since you're always calling remote procedures). Even though, a GraphQL API shares some similarities with a REST API:
 
