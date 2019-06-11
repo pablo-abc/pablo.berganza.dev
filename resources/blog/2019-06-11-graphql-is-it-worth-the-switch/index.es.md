@@ -5,9 +5,7 @@ created: '2019-06-11'
 banner: https://scontent.fsal3-1.fna.fbcdn.net/v/t1.0-9/17103606_10212690429522575_6588581555881398083_n.jpg?_nc_cat=102&_nc_ht=scontent.fsal3-1.fna&oh=0d841081496a1863cc9986663c7f4798&oe=5D967AFD
 bannertitle: Peloponeso, Grecia
 tags:
-    - javascript
     - graphql
-    - typescript
     - rest
     - api
 ---
