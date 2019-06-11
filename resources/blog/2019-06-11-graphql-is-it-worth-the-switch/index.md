@@ -1,7 +1,7 @@
 ---
 title: 'GraphQL: Is it worth the switch?'
 introduction: A nice alternative to REST APIs with a fantastic developer experience
-created: '2019-06-06'
+created: '2019-06-11'
 banner: https://scontent.fsal3-1.fna.fbcdn.net/v/t1.0-9/17103606_10212690429522575_6588581555881398083_n.jpg?_nc_cat=102&_nc_ht=scontent.fsal3-1.fna&oh=0d841081496a1863cc9986663c7f4798&oe=5D967AFD
 bannertitle: Peloponnese, Greece
 draft: true
@@ -58,7 +58,7 @@ I've talked about how a REST API looks like to the client, but the characteristi
   * **Cacheable**: If a REST endpoint is stable enough it could be cached, be it in the server or in the client. Cacheable endpoints must explicitly state they are so.
   * **Layered system**: A system architecture can be layered, meaning the client might be interacting with different servers but still acting as if its interacting directly with the REST API.
   * **Code on demand**: This is the only optional constraint of the REST architecture. It means, when needed, a REST endpoint may return executable code as a response from a client's request.
-  
+
 This constraints all bring some benefits to the table:
 
   * A uniform interface allows clients to intuitively navigate on your API when they start to get used to id.
@@ -143,7 +143,7 @@ But, of course, there are not only advantages in the GraphQL world. We're losing
   * For simple applications, requests can be made using the fetch API or libraries like Axios. But, if the application grows, a GraphQL library (such as Apollo Client) might be needed, which would increase the resulting bundle size.
   * It can considerably increase the server's code complexity when optimizations are needed.
   * GraphQL generally always returns a 200 status. Since many queries/mutations might be sent in a single request, and some of them may succeed or fail for various reasons, error management can become complicated on the client side.
-  
+
 I didn't talk about many othe features on the GraphQL specification, such as fragments, named queries and mutations, variables, etc. So make sure to check [graphql.org](https://graphql.org) in order to learn more about it if you're interested.
 
 ## Conclusion
