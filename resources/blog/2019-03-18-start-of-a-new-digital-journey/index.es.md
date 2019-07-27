@@ -2,7 +2,7 @@
 title: Inicio de un nuevo viaje digital
 introduction: Cómo me compliqué la vida al intentar crear mi sitio web desde cero
 created: '2019-03-18'
-banner: https://scontent.fsal2-1.fna.fbcdn.net/v/t1.0-9/26165170_10215612867861707_5757573544907691457_n.jpg?_nc_cat=100&_nc_ht=scontent.fsal2-1.fna&oh=62808d7a548110365d49c01262249f64&oe=5D22B34F
+banner: https://scontent.fsal2-1.fna.fbcdn.net/v/t1.0-9/26165170_10215612867861707_5757573544907691457_n.jpg?_nc_cat=100&_nc_oc=AQnzOEap3ahw4i13bvQLiMFXIqThS2h4tB0g7ZlBN634cWxVfPYnkHo2UjzVXHBB9rw&_nc_ht=scontent.fsal2-1.fna&oh=aef8f398c2d5f2d115f46653d5824302&oe=5DE8744F
 bannertitle: Bruselas, Bélgica
 tags:
     - clojure

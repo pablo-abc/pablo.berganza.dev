@@ -26,6 +26,6 @@
     "gh-pages": "^2.0.1"
   },
   "dependencies": {
-    "@barba/core": "^2.1.0"
+    "@barba/core": "^2.3.12"
   }
 }
