@@ -164,8 +164,9 @@
 
 (defn- home-img-attr [attr]
   (-> {}
-     (assoc :src (attr 0))
-     (assoc :alt (attr 1))))
+     (assoc :data-src (attr 0))
+     (assoc :alt (attr 1))
+     (assoc :class "lozad")))
 
 (defn home [{:keys [meta entry]}]
   (render "Home" meta entry
