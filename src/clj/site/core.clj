@@ -88,6 +88,7 @@
         url (str (:base-url meta) (subs (or (:permalink entry) " ") 1))]
     [:head
      [:meta {:charset "utf-8"}]
+     [:link {:href "https://toot.cafe/@pberganza" :rel "me"}]
      ;; FAVICON
      [:link {:rel "apple-touch-icon", :sizes "57x57", :href "/apple-icon-57x57.png"}]
      [:link {:rel "apple-touch-icon", :sizes "60x60", :href "/apple-icon-60x60.png"}]
