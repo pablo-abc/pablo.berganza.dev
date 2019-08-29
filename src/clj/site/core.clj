@@ -51,6 +51,8 @@
         (:contact (get navbar-links lang))]]]
      [:div.right-nav
       [:a#lang-nav.nav-item {:href (get-alt-link meta entry)
+                             :rel "alternate"
+                             :hreflang (if (= lang "en") "es" "en")
                              :data-barba-prevent "self"}
        (if (= lang "en") "es" "en")]
       [:a.nav-item.sm
