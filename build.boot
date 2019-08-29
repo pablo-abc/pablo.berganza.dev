@@ -1,5 +1,5 @@
 (set-env!
- :source-paths #{"src/clj"}
+ :source-paths #{"src/clj" "src/cljs"}
  :resource-paths #{"resources"}
  :dependencies '[[perun "0.4.3-SNAPSHOT" :scope "test"]
                  [hiccup "1.0.5" :exclusions [org.clojure/clojure]]
@@ -8,7 +8,9 @@
                  [deraen/boot-sass "0.3.1" :scope "test"]
                  [deraen/boot-livereload "0.2.1" :scope "test"]
                  [org.slf4j/slf4j-nop "1.7.26" :scope "test"]
-                 [org.clojure/clojure "1.10.0"]])
+                 [org.clojure/clojure "1.10.0"]
+                 [degree9/boot-shadow "2.8.14-0" :scope "test"]
+                 [thheller/shadow-cljs "2.8.52"]])
 
 (require '[io.perun :as perun]
          '[io.perun.core :as pc]
@@ -17,7 +19,8 @@
          '[deraen.boot-sass :refer [sass]]
          '[deraen.boot-livereload :refer [livereload]]
          '[clojure.string :as string]
-         '[site.core :refer [get-lang blog?]])
+         '[site.core :refer [get-lang blog?]]
+         '[degree9.boot-shadow :as shadow])
 
 (task-options!
  pom {:project 'pablo.berganza.dev :version "0.1.5"})
@@ -118,7 +121,8 @@
 (deftask build-dev
   "Builds with livereload"
   []
-  (comp (build)
+  (comp (shadow/compile :build :app)
+        (build)
         (render)
         (livereload :snippet true)
         (target)))
@@ -126,7 +130,8 @@
 (deftask publish
   "Build and generate files"
   []
-  (comp (build)
+  (comp (shadow/release :build :app)
+        (build)
         (perun/draft)
         (render)
         (target)))
