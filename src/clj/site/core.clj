@@ -7,7 +7,7 @@
   '(["https://cdn.svgporn.com/logos/javascript.svg" "JavaScript"]
     ["https://cdn.svgporn.com/logos/typescript-icon.svg" "TypeScript"]
     ["https://cdn.svgporn.com/logos/clojure.svg" "Clojure"]
-    ["https://raw.githubusercontent.com/cljs/logo/master/cljs-white.png"
+    ["/img/clojurescript.svg"
      "ClojureScript"]
     ["https://cdn.svgporn.com/logos/python.svg" "Python"]
     ["https://cdn.svgporn.com/logos/docker.svg" "Docker"]))
