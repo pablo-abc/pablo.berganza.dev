@@ -6,7 +6,7 @@ myabilities: My Abilities
 type: home
 ---
 
-Hello! I am a Computer Sciencist, now mostly working as a web developer.
+Hello! I am a Computer Scientist, now mostly working as a web developer.
 
 Most of my work has been developing back-end services for web and mobile applications. But I also have some experience developing web applications using ClojureScript, ReactJS, and VueJS.
 
